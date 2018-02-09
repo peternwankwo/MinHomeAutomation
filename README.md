@@ -21,4 +21,4 @@ apt-get install raspberrypi-ui-mods
 4.) go to root cd/var/www/html/
 5.) create a folder MinHomeAutomation
 6.) change to the MinHomeAutomation directory cd MinHomeAutomation
-7.) Git clone : 
+7.) Git clone : https://github.com/peternwankwo/MinHomeAutomation.git
