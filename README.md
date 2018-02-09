@@ -5,7 +5,7 @@ On your PC:
 2.)	Test WAMP installation: http://localhost
 3.)	Download the repository from git
 4.)	Create a folder MinHomeAutomation in “\wamp\www”
-5.)	Copy the files from GIT to your WAMP folder “\wamp\www\MinHomeAutomation”
+5.)	Copy the files from GIT to your WAMP folder “\wamp\www\MinHomeAutomation”: https://github.com/peternwankwo/MinHomeAutomation.git
 6.)	Open PHP my admin and import file “database.sql” to create the database and user
 7.)	Access the POC application http://localhost/MinHomeAutomation
 
