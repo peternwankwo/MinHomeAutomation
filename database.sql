@@ -16,11 +16,9 @@ CREATE TABLE IF NOT EXISTS `componentusage` (
   timeOff datetime
 );
 
-create table bookmark (
-  username varchar(16) not null,
-  bm_URL varchar(255) not null,
-  index (username),
-  index (bm_URL)
+CREATE TABLE `latestUsage` (
+  lastestUsageId bigint(20) NOT NULL,
+  lastOff datetime NOT NULL
 );
 
 grant select, insert, update, delete
