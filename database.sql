@@ -7,7 +7,7 @@ create table user  (
   email varchar(100) not null
 );
 
-CREATE TABLE IF NOT EXISTS `componentusage` (
+CREATE TABLE IF NOT EXISTS componentusage(
   compUsageId bigint(20) NOT NULL,
   componentName text NOT NULL,
   componentLocation text NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `componentusage` (
   timeOff datetime
 );
 
-CREATE TABLE `latestUsage` (
+CREATE TABLE latestUsage (
   lastestUsageId bigint(20) NOT NULL,
   lastOff datetime NOT NULL
 );
