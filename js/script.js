@@ -15,9 +15,7 @@ function toggleSwitch(sw) {
 function setSwitch(sw, prefferdStatus) {
     var status = sw.getAttribute('status');
     status = prefferdStatus;
-
-    // DO The Magic
-
+    sw.checked = (status == 'ON') ? true : false;
     console.log('setSwitch:' + sw.id + '|' + status);
 }
 
