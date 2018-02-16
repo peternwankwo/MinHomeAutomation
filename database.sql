@@ -8,12 +8,16 @@ create table user  (
 );
 
 CREATE TABLE IF NOT EXISTS componentusage(
-  compUsageId bigint(20) NOT NULL,
+  compUsageId bigint(20) NOT NULL AUTO_INCREMENT,
   componentName text NOT NULL,
   componentLocation text NOT NULL,
   floorLocaltion text,
   timeOn datetime,
-  timeOff datetime
+  timeOff datetime,
+  type text,
+  status BOOLEAN,
+  PRIMARY KEY (compUsageId)
+  
 );
 
 CREATE TABLE latestUsage (
