@@ -98,3 +98,8 @@ div.switch div {
 #primary-nav {
     background-color: skyblue;
 }
+
+.border {
+    display: inline-block;
+    margin: 6px;
+}
