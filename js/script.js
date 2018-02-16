@@ -13,7 +13,13 @@ var switchConstants = {
         light: 'Light',
         water: 'Water'
     },
-    apiBaseUrl : 'http://192.168.43.172:9988'
+    apiBaseUrl : 'http://192.168.43.172:9988',
+    navigation:{
+        lighting: 'lighting.html',
+        security: 'security.html',
+        watering: 'watering.html',
+        settings: 'settings.html'
+    }
 };
 
 // Functions
@@ -45,8 +51,6 @@ function setSwitch(sw, prefferdStatus) {
     sw.setAttribute('status', prefferdStatus);
     console.log('setSwitch:' + sw.id + '|' + status);
 }
-
-
 
 function setStatusToApi(st, type) {
     var status = (st == switchConstants.status.on) ? 1 : 0;
@@ -101,9 +105,27 @@ function updateContols() {
 
     }
 }
+function selectActiveNavigationItem(){
+    // add class active to LI
+    var activePage = getActivePage();
+    $('#' + activePage).addClass(' active');
+}
+function getActivePage(){
+    var url = $(location).attr('href'),
+        parts = url.split("/"),
+        last_part = parts[parts.length-2];
+    return parts[parts.length-1].replace('.html','');
+}
 
 // Event Listener
 document.addEventListener("DOMContentLoaded", function(event) {
+
+    // Load the navigation-code-snippet into the placeholder
+    $( "#navbarTogglerDemo02" ).load("./html/navigation.html",function() {
+        selectActiveNavigationItem();
+    });
+
+
     var arrSwitches = [switchConstants.switches.light, switchConstants.switches.water];
     arrSwitches.forEach(function(switchSelector) {
         sw = document.getElementById(switchSelector);
