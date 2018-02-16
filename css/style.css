@@ -103,3 +103,9 @@ div.switch div {
     display: inline-block;
     margin: 6px;
 }
+
+#container {
+	height: 300px;
+	min-width: 310px;
+	max-width: 800px;
+}
