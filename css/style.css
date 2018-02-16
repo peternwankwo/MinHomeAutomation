@@ -99,3 +99,9 @@ div.switch div {
     background-color: skyblue;
 }
 
+.iframe.embed-responsive-item.iframe-new{
+      padding-right: 40px !important; 
+     left: 20px !important; 
+     padding-bottom: 20px !important; 
+}
+

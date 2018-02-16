@@ -46,3 +46,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
         //toggleSwitch(switch1);
     }
 });
+
