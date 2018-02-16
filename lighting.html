@@ -17,13 +17,14 @@
     <script src="./bootstrap.min.js"></script>
 
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link href="css/toggle-switch.css" rel="stylesheet">
 </head>
 
-<body class="container-fluid px-0" >
+<body class="container-fluid px-0">
 <header id="primary-nav">
     <nav class="navbar navbar-expand-lg navbar-light bg-success">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,20 +32,24 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="lighting-overview.html"><img src="assets/light-bulb-grey.svg" width="40" height="40"
-                                                                           class="d-inline-block align-top" alt=""> Lighting<span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="lighting-overview.html"><img src="assets/light-bulb-grey.svg" width="40"
+                                                                           height="40"
+                                                                           class="d-inline-block align-top" alt="">
+                        Lighting<span
+                                class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="watering.html"><img src="assets/watering_grey.svg" width="30" height="30"
-                                                                  class="d-inline-block align-top" alt=""> Watering Plants</a>
+                                                                  class="d-inline-block align-top" alt=""> Watering
+                        Plants</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="security.html"><img src="assets/cam-grey.svg" width="30" height="30"
                                                                   class="d-inline-block align-top" alt=""> Security</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="settings.html"><img src="assets/settings_greysvg.svg" width="30" height="30"
+                    <a class="nav-link" href="settings.html"><img src="assets/settings_greysvg.svg" width="30"
+                                                                  height="30"
                                                                   class="d-inline-block align-top" alt=""> Settings</a>
                 </li>
             </ul>
@@ -73,12 +78,43 @@
 <form>
     <div class="row">
         <div class="col border border-primary border-top-0">
-            <a href="#"><img class="rounded mx-auto p-2 d-block" src="assets/light-bulb-grey.svg" alt="" width="150" height="150"></a>
+            <a href="#"><img class="rounded mx-auto p-2 d-block" src="assets/light-bulb-grey.svg" alt="" width="150"
+                             height="150"></a>
             <h5 class="text-center text-success">Lighting</h5>
         </div>
-
     </div>
-
+    <div class="row">
+        <div class="col p-2 ml-2">
+            <h5 class="text-success">Mannual Switch</h5>
+        </div>
+        <div class="col p-2  text-center">
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-2 ml-2">
+            <h5 class="text-success">Motion Detection</h5>
+        </div>
+        <div class="col p-2  text-center">
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-2 ml-2">
+            <h5 class="text-success">Motion detection settings</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-2 ml-2">
+            <h5 class="text-success">Usage details</h5>
+        </div>
+    </div>
 </form>
 </body>
 </html>
