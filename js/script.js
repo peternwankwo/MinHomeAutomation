@@ -1,12 +1,18 @@
 // Global variables
 var piStatusObject;
-var switch1;
-var switch2;
 
 var switchConstants = {
     status : {
         on: 'ON',
         off: 'OFF'
+    },
+    switches: {
+        light: 'switch1',
+        water: 'switch2'
+    },
+    types: {
+        light: 'Light',
+        water: 'Water'
     },
     apiBaseUrl : 'http://192.168.43.172:9988'
 };
@@ -15,14 +21,13 @@ var switchConstants = {
 function getStatus(sw) {
     var status = sw.getAttribute('status');
     if (status === switchConstants.status.off) {
-        sw.setAttribute('status', switchConstants.status.on);
-
+        sw.setAttribute('status', switchConstants.status.off);
     } else {
         sw.setAttribute('status', switchConstants.status.off);
     }
+
     // Send status to API
     setStatusToApi(status);
-
     console.log(sw.id + ':' + sw.getAttribute('status'));
 }
 function toggleSwitch(sw) {
@@ -47,7 +52,6 @@ function setStatusToApi(st) {
             // Make settings globaly available
             piStatusObject = JSON.parse(result);
             updateContols();
-            alert('check if switch needs to be updated based on the response of the API');
         },
         error: function (error) {
             alert("Peters mobile network is not available, so also the API is not available!");
@@ -77,10 +81,13 @@ function updateContols() {
         for (var obj in aaa) {
             var apiSettings = aaa[obj];
             var statusFromApi = (apiSettings.status === '0') ? switchConstants.status.off : switchConstants.status.on;
-            var sw = document.getElementById('switch1');
+
+
+            var switchSelector = (apiSettings.type === 'Light') ? 'switch1' : 'switch2';
+            var sw = document.getElementById(switchSelector);
             if (sw) {
                 var statusFromControl = sw.getAttribute('status');
-                if (statusFromControl != statusFromApi) {
+                if (statusFromControl !== statusFromApi) {
                     // Updating the status of the switch control is needed
                     setSwitch(sw, statusFromApi);
                 }
@@ -92,14 +99,13 @@ function updateContols() {
 
 // Event Listener
 document.addEventListener("DOMContentLoaded", function(event) {
-    var arrSwitches = ['switch1', 'switch2'];
+    var arrSwitches = [switchConstants.switches.light, switchConstants.switches.water];
     arrSwitches.forEach(function(switchSelector) {
         sw = document.getElementById(switchSelector);
         if (sw) {
             // Call to API (to retrieve status)
-
-            var type = (switchSelector === 'switch1') ? 'Light' : 'Water';
-            getStatusFromApi();
+            var type = (switchSelector === switchConstants.switches.light) ? switchConstants.types.light : switchConstants.types.water;
+            getStatusFromApi(type);
 
             // Add eventlistener for the specific switch
             sw.addEventListener("click", function(event) {
