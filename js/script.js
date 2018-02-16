@@ -1,6 +1,8 @@
 // Global variables
 var piStatusObject;
 var switch1;
+var switch2;
+
 var switchConstants = {
     status : {
         on: 'ON',
@@ -52,8 +54,8 @@ function setStatusToApi(st) {
         }
     }, this);
 }
-function getStatusFromApi() {
-    var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/Light";
+function getStatusFromApi(type) {
+    var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/" + type;
     //var apiUrl = 'http://localhost/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/status';
     $.ajax({
         url: apiUrl,
@@ -90,15 +92,19 @@ function updateContols() {
 
 // Event Listener
 document.addEventListener("DOMContentLoaded", function(event) {
-    switch1 = document.getElementById('switch1');
-    if (switch1) {
-        // Call to API (to retrieve status)
-        getStatusFromApi();
-    }
-    var sw = document.getElementById('switch1');
-    if (sw){
-        sw.addEventListener("click", function(event) {
-            getStatus(sw);
-        });
-    }
+    var arrSwitches = ['switch1', 'switch2'];
+    arrSwitches.forEach(function(switchSelector) {
+        sw = document.getElementById(switchSelector);
+        if (sw) {
+            // Call to API (to retrieve status)
+
+            var type = (switchSelector === 'switch1') ? 'Light' ? 'Water';
+            getStatusFromApi();
+
+            // Add eventlistener for the specific switch
+            sw.addEventListener("click", function(event) {
+                getStatus(sw);
+            });
+        }
+    })
 });

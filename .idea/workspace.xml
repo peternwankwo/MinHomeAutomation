@@ -4,6 +4,7 @@
     <list default="true" id="33374925-fc4f-41bb-ab9c-28c9f323f425" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
+      <change beforePath="$PROJECT_DIR$/lightsMenu.php" afterPath="$PROJECT_DIR$/lightsMenu.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,27 +28,16 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="102" column="5" lean-forward="false" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+            <state relative-caret-position="612">
+              <caret line="98" column="47" lean-forward="true" selection-start-line="98" selection-start-column="47" selection-end-line="98" selection-end-column="47" />
               <folding>
-                <element signature="e#75#183#0" expanded="false" />
+                <element signature="e#89#197#0" expanded="false" />
                 <element signature="n#!!block;n#getStatus#0" expanded="false" />
                 <element signature="n#!!block;n#toggleSwitch#0" expanded="false" />
                 <element signature="n#!!block;n#setSwitch#0" expanded="false" />
                 <element signature="n#!!block;n#setStatusToApi#0" expanded="false" />
-                <element signature="n#!!block;n#getStatusFromApi#0" expanded="false" />
                 <element signature="n#!!block;n#updateContols#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home_page.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home_page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="71" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -55,18 +45,18 @@
       <file leaf-file-name="lighting-overview.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lighting-overview.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
+            <state relative-caret-position="397">
               <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="watering.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/watering.html">
+      <file leaf-file-name="lightsMenu.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lightsMenu.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+            <state relative-caret-position="631">
+              <caret line="45" column="44" lean-forward="true" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -75,7 +65,7 @@
       <file leaf-file-name="settings.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/settings.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
+            <state relative-caret-position="635">
               <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
               <folding />
             </state>
@@ -119,13 +109,13 @@
         <option value="$PROJECT_DIR$/phpapi/db.php" />
         <option value="$PROJECT_DIR$/phpapi/api.php" />
         <option value="$PROJECT_DIR$/output_fns.php" />
-        <option value="$PROJECT_DIR$/lightsMenu.php" />
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/home_page.html" />
         <option value="$PROJECT_DIR$/lighting-overview.html" />
         <option value="$PROJECT_DIR$/watering.html" />
         <option value="$PROJECT_DIR$/settings.html" />
         <option value="$PROJECT_DIR$/security.html" />
+        <option value="$PROJECT_DIR$/lightsMenu.php" />
         <option value="$PROJECT_DIR$/js/script.js" />
       </list>
     </option>
@@ -163,11 +153,6 @@
             <path>
               <item name="MinHomeAutomation" type="b2602c69:ProjectViewProjectNode" />
               <item name="MinHomeAutomation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MinHomeAutomation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MinHomeAutomation" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -302,7 +287,7 @@
       <workItem from="1518773100415" duration="3114000" />
       <workItem from="1518778829909" duration="4651000" />
       <workItem from="1518786908522" duration="1132000" />
-      <workItem from="1518788361282" duration="330000" />
+      <workItem from="1518788361282" duration="1058000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <created>1518788397540</created>
@@ -318,11 +303,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518788448896</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1518788694307</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1518788694307</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9227000" />
+    <option name="totallyTimeSpent" value="9955000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -531,12 +523,11 @@
         <state relative-caret-position="374">
           <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
           <folding>
-            <element signature="e#75#183#0" expanded="false" />
+            <element signature="e#89#197#0" expanded="false" />
             <element signature="n#!!block;n#getStatus#0" expanded="false" />
             <element signature="n#!!block;n#toggleSwitch#0" expanded="false" />
             <element signature="n#!!block;n#setSwitch#0" expanded="false" />
             <element signature="n#!!block;n#setStatusToApi#0" expanded="false" />
-            <element signature="n#!!block;n#getStatusFromApi#0" expanded="false" />
             <element signature="n#!!block;n#updateContols#0" expanded="false" />
           </folding>
         </state>
@@ -620,39 +611,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lightsMenu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="71" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lighting-overview.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/watering.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
           <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
@@ -676,17 +635,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/home_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="71" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lighting.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-351">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lighting-overview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="635">
+          <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lightsMenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="45" column="44" lean-forward="true" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="102" column="5" lean-forward="false" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+        <state relative-caret-position="612">
+          <caret line="98" column="47" lean-forward="true" selection-start-line="98" selection-start-column="47" selection-end-line="98" selection-end-column="47" />
           <folding>
-            <element signature="e#75#183#0" expanded="false" />
+            <element signature="e#89#197#0" expanded="false" />
             <element signature="n#!!block;n#getStatus#0" expanded="false" />
             <element signature="n#!!block;n#toggleSwitch#0" expanded="false" />
             <element signature="n#!!block;n#setSwitch#0" expanded="false" />
             <element signature="n#!!block;n#setStatusToApi#0" expanded="false" />
-            <element signature="n#!!block;n#getStatusFromApi#0" expanded="false" />
             <element signature="n#!!block;n#updateContols#0" expanded="false" />
           </folding>
         </state>
