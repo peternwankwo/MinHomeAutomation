@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,59 +21,73 @@
     <link href="signin.css" rel="stylesheet">
 </head>
 
-<body class="container-fluid">
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02"
+<body class="container-fluid px-0">
+    <header id="primary-nav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-success">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><img src="assets/light-bulb-grey.svg" width="40" height="40"
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="lighting.html"><img src="assets/light-bulb-grey.svg" width="40" height="40"
                                                       class="d-inline-block align-top" alt=""> Lighting<span
                             class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="assets/watering_grey.svg" width="30" height="30"
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="watering.html"><img src="assets/watering_grey.svg" width="30" height="30"
                                                       class="d-inline-block align-top" alt=""> Watering Plants</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="assets/cam-grey.svg" width="30" height="30"
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="security.html"><img src="assets/cam-grey.svg" width="30" height="30"
                                                       class="d-inline-block align-top" alt=""> Security</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="assets/settings_greysvg.svg" width="30" height="30"
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="settings.html"><img src="assets/settings_greysvg.svg" width="30" height="30"
                                                       class="d-inline-block align-top" alt=""> Settings</a>
-                </li>
-            </ul>
-            <nav class="nav navbar-nav">
-                <a href="#about"><img src="../assets/notification.svg" width="30" height="30"
-                                      class="d-inline-block align-top" alt="">Notification</a>
-            </nav>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn">Notifications</button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+                <ul class="dropdown-menu">
+                    <ul class="pager">
+                        <li class="previous">
+                            <a href="#">&larr; Older</a>
+                        </li>
+                        <li class="next">
+                            <a href="#">Newer &rarr;</a>
+                        </li>
+                    </ul>
+                    <!-- dropdown menu links -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <br/><br/>
+    <form>
+        <div class="row">
+            <div class="col">
+                <a href="lighting.html"><img class="rounded mx-auto p-2 d-block" src="assets/light-bulb-grey.svg" alt="" width="120" height="120"></a>
+            </div>
+            <div class="col">
+                <a href="watering.html"><img class="rounded mx-auto p-2 d-block" src="assets/watering_grey.svg" alt="" width="120" height="120"></a>
+            </div>
+            <div class="w-100"></div>
+            <div class="col">
+                <a href="security.html"><img class="rounded mx-auto p-2 d-block" src="assets/cam-grey.svg" alt="" width="120" height="120"></a>
+            </div>
+            <div class="col">
+                <a href="settings.html"><img class="rounded mx-auto p-2 d-block" src="assets/settings_greysvg.svg" alt="" width="120" height="120"></a>
+            </div>
         </div>
-    </nav>
-</header>
-<form>
-    <div class="row">
-        <div class="col-sm-6">
-            <img class="p-3" src="assets/light-bulb-grey.svg" alt="" width="100" height="100">
-        </div>
-        <div class="col-sm-6">
-            <img src="assets/light-bulb-grey.svg" alt="" width="100" height="100">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <img src="assets/light-bulb-grey.svg" alt="" width="100" height="100">
-        </div>
-        <div class="col-sm-6">
-            <img src="assets/light-bulb-grey.svg" alt="" width="100" height="100">
-        </div>
-    </div>
-</form>
+    </form>
 </body>
+
 </html>

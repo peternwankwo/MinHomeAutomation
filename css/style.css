@@ -94,3 +94,8 @@ div.switch div {
     font-size: 20px;
     line-height: initial;
 }
+
+#primary-nav {
+    background-color: skyblue;
+}
+
