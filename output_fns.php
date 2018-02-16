@@ -13,6 +13,7 @@ function do_html_header($title)
 <script src="./bootstrap.min.js" ></script>
   </head>
   <body>
+  <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -42,8 +43,9 @@ function do_html_header($title)
     </ul>
   </div>
 </nav>
-  <h1>&nbsp;MIN Home Automation</h1>
+  <h1 align="center" style="color:green;">&nbsp;MIN Home Automation</h1>
   <hr />
+  </div>
 <?php
   if($title)
     do_html_heading($title);
