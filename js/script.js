@@ -68,7 +68,7 @@ function setStatusToApi(st, type) {
             updateContols();
         },
         error: function (error) {
-            alert("Peters mobile network is not available, so also the API is not available!");
+            console.log("Peters mobile network is not available, so also the API is not available!");
         }
     }, this);
 }
@@ -89,7 +89,7 @@ function getStatusFromApi(type) {
             updateContols();
         },
         error: function (error) {
-            alert("Peters mobile network is not available, so also the API is not available!");
+            console.log("Peters mobile network is not available, so also the API is not available!");
         }
     }, this);
 }

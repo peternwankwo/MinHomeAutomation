@@ -32,6 +32,7 @@ $app->get('/v1/beacon', function () {
 				curl_close($ch);
 
 				echo $output;
+				//echo json_encode($info);
 });
 
 // run the Slim app
