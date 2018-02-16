@@ -17,3 +17,4 @@ out.txt
 .sonar
 /aab-oda-pipeline
 sonar-project.properties
+/.idea/workspace.xml

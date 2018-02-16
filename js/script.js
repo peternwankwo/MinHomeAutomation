@@ -10,7 +10,7 @@ var switchConstants = {
 };
 
 function getStatus(sw) {
-    var status =sw.getAttribute('status');
+    var status = sw.getAttribute('status');
     if (status === switchConstants.status.off) {
         sw.setAttribute('status', switchConstants.status.on);
 
@@ -44,12 +44,12 @@ function setStatusToApi(st) {
         type: "GET",
         success: function (result) {
             // Make settings globaly available
-            //piStatusObject = JSON.parse(result);
-            //updateContols();
+            piStatusObject = JSON.parse(result);
+            updateContols();
             alert('check if switch needs to be updated based on the response of the API');
         },
         error: function (error) {
-            alert("Peters mobile network is not available, so no API available!");
+            alert("Peters mobile network is not available, so also the API is not available!");
         }
     }, this);
 }
@@ -65,7 +65,7 @@ function getStatusFromApi() {
             updateContols();
         },
         error: function (error) {
-            alert("Peters mobile network is not available, so no API available!");
+            alert("Peters mobile network is not available, so also the API is not available!");
         }
     }, this);
 }
@@ -75,10 +75,14 @@ function updateContols() {
         var aaa = piStatusObject.resultObj.serviceDetail;
         for (var obj in aaa) {
             var apiSettings = aaa[obj];
-            var status = (apiSettings.Status === '0') ? switchConstants.status.off : switchConstants.status.on;
+            var statusFromApi = (apiSettings.status === '0') ? switchConstants.status.off : switchConstants.status.on;
             var sw = document.getElementById('switch1');
             if (sw) {
-                setSwitch(sw, status);
+                var statusFromControl = sw.getAttribute('status');
+                if (statusFromControl != statusFromApi) {
+                    // Updating the status of the switch control is needed
+                    setSwitch(sw, statusFromApi);
+                }
             }
         }
 
