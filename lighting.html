@@ -13,11 +13,13 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="./bootstrap.min.css">
     <script src="./jquery-3.2.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="./popper.min.js"></script>
     <script src="./bootstrap.min.js"></script>
 
-    <!-- Custom styles for this template -->
-    <link href="css/toggle-switch.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css" >
+    <script src="./js/script.js" ></script>
+
 </head>
 
 <body class="container-fluid px-0">
@@ -88,10 +90,29 @@
             <h5 class="text-success pl-2">Mannual Switch</h5>
         </div>
         <div class="col p-2  text-center">
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
+
+            <div class="switch">
+                <label class="labelLight">Light</label>
+                <span class="labelSwitchIsOff">OFF</span>
+                <div>
+                    <input id="switch1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" onclick="toggleSwitch(this)">
+                    <label id="switch1label" for="switch1"></label>
+                </div>
+                <span class="labelSwitchIsOn">ON</span>
+            </div>
+
+
+            <div class="switch">
+                <label class="labelLight">Watering</label>
+                <span class="labelSwitchIsOff">OFF</span>
+                <div>
+                    <input id="switch2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" onclick="toggleSwitch(this)">
+                    <label id="switch2label" for="switch2"></label>
+                </div>
+                <span class="labelSwitchIsOn">ON</span>
+            </div>
+
+
         </div>
     </div>
     <div class="row">
