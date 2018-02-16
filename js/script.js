@@ -101,10 +101,22 @@ function updateContols() {
             var apiSettings = aaa[obj];
             var statusFromApi = (apiSettings.status === '0') ? switchConstants.status.off : switchConstants.status.on;
 
-            if(statusFromApi === switchConstants.status.on){
-                document.getElementById("light-on-status").src = "assets/light-bulb-green.svg";
-            }else{
-                document.getElementById("light-on-status").src = "assets/light-bulb-grey.svg";
+            /*toggle the image of the lighting based on status*/
+            if(document.getElementById("light-on-status")){
+                if(statusFromApi === switchConstants.status.on){
+                    document.getElementById("light-on-status").src = "assets/light-bulb-green.svg";
+                }else{
+                    document.getElementById("light-on-status").src = "assets/light-bulb-grey.svg";
+                }
+            }
+
+            /*toggle the image of the watering based on status*/
+            if(document.getElementById("water-on-status")){
+                if(statusFromApi === switchConstants.status.on){
+                    document.getElementById("water-on-status").src = "assets/watering_green.svg";
+                }else{
+                    document.getElementById("water-on-status").src = "assets/watering_grey.svg";
+                }
             }
 
             var switchSelector = (apiSettings.type === 'Light') ? 'switch1' : 'switch2';
