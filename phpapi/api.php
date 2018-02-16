@@ -24,11 +24,10 @@ function ($key) use ($app) {
    try{
 	if($key == 'cOjxzK4vGc7310'){
     $request = $app->request();
-   
+
 			   try {
 
 				  $result = null;
-
 					$sql = "SELECT DISTINCT Type FROM componentusage";
 
 					$db = getDB();
@@ -37,10 +36,10 @@ function ($key) use ($app) {
 					 $allRoutes = $stmt->fetchAll();
 					 $db = null;
 					 $result = null;
-					 $result = '{"resultObj":{"services":'.json_encode($allRoutes).',"status":"SUCCESS"}}';
+					 $result = '{"resultObj":{"usage":'.json_encode($allRoutes).',"status":"SUCCESS"}}';
 
 				  echo $result;
-				  
+
 			   } catch(PDOException $e) {
 				  //error_log($e->getMessage(), 3, '/var/tmp/php.log');
 				  echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -59,7 +58,7 @@ function ($key,$typeName) use ($app) {
    try{
 	if($key == 'cOjxzK4vGc7310'){
     $request = $app->request();
-   
+
 			   try {
 
 				  $result = null;
@@ -138,7 +137,7 @@ function ($key,$typeName,$status) use ($app) {
 					 $db = null;
 					
 				  echo $result;
-				  
+
 			   } catch(PDOException $e) {
 				  //error_log($e->getMessage(), 3, '/var/tmp/php.log');
 				  echo '{"error":{"text":'. $e->getMessage() .'}}';

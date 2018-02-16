@@ -94,3 +94,12 @@ div.switch div {
     font-size: 20px;
     line-height: initial;
 }
+
+#primary-nav {
+    background-color: skyblue;
+}
+
+.border {
+    display: inline-block;
+    margin: 6px;
+}
