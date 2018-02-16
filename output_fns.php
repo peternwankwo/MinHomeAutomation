@@ -9,9 +9,11 @@ function do_html_header($title)
     <title><?php echo $title;?></title>
 	<link rel="stylesheet" href="./bootstrap.min.css" >
 	<script src="./jquery-3.2.1.slim.min.js" ></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="./popper.min.js" ></script>
 	<script src="./bootstrap.min.js" ></script>
 	<link rel="stylesheet" href="./css/style.css" >
+	<script src="./js/script.js" ></script>
   </head>
   <body>
   <div class="container">

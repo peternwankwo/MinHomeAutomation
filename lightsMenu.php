@@ -31,10 +31,8 @@ if (isset($_POST['LightAUTO']))
 <button class="btn btn-success" name="LightOFF">Light OFF</button><br><br>
 <button class="btn btn-danger" name="LightAUTO">Light AUTO</button><br><br>
 
-
-
 <div class="switch">
-  <label class="labelLight">Light 1</label>
+  <label class="labelLight">Light</label>
   <span class="labelSwitchIsOff">OFF</span>
   <div>
       <input id="switch1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" (click)="switch($event)">
@@ -43,28 +41,16 @@ if (isset($_POST['LightAUTO']))
   <span class="labelSwitchIsOn">ON</span>
 </div>
 
+
 <div class="switch">
-  <label class="labelLight">Light 2</label>
+  <label class="labelLight">Watering</label>
   <span class="labelSwitchIsOff">OFF</span>
   <div>
       <input id="switch2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" (click)="switch($event)">
-      <label id="switch2label" for="switch2"></label>
+      <label id="switch2label" for="switch1"></label>
   </div>
   <span class="labelSwitchIsOn">ON</span>
 </div>
-
-<hr/>
-
-<div class="switch">
-  <label class="labelLight">Auto</label>
-  <span class="labelSwitchIsOff">OFF</span>
-  <div>
-    <input id="switch3" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" (click)="switch($event)">
-    <label id="switch3label" for="switch3"></label>
-  </div>
-  <span class="labelSwitchIsOn">ON</span>
-</div>
-
 
 
 

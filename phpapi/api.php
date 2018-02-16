@@ -19,17 +19,17 @@ $app->get('/v1/:name', function ($name) {
     echo "Hello, $name";
 });
 
-$app->get('/v1/:key/services',
+$app->get('/v1/:key/status',
 function ($key) use ($app) {
    try{
 	if($key == 'cOjxzK4vGc7310'){
     $request = $app->request();
-   
+
 			   try {
 
 				  $result = null;
 
-					$sql = "SELECT * FROM service";
+					$sql = "SELECT * FROM componentusage";
 
 					$db = getDB();
 					$stmt = $db->prepare($sql);
@@ -37,10 +37,10 @@ function ($key) use ($app) {
 					 $allRoutes = $stmt->fetchAll();
 					 $db = null;
 					 $result = null;
-					 $result = '{"resultObj":{"services":'.json_encode($allRoutes).',"status":"SUCCESS"}}';
+					 $result = '{"resultObj":{"usage":'.json_encode($allRoutes).',"status":"SUCCESS"}}';
 
 				  echo $result;
-				  
+
 			   } catch(PDOException $e) {
 				  //error_log($e->getMessage(), 3, '/var/tmp/php.log');
 				  echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -59,7 +59,7 @@ function ($key,$userid,$serviceid) use ($app) {
    try{
 	if($key == 'cOjxzK4vGc7310'){
     $request = $app->request();
-   
+
 			   try {
 
 				  $result = null;
@@ -75,7 +75,7 @@ function ($key,$userid,$serviceid) use ($app) {
 					 $result = '{"resultObj":{"servicestatus":'.json_encode($allRoutes).',"status":"SUCCESS"}}';
 
 				  echo $result;
-				  
+
 			   } catch(PDOException $e) {
 				  //error_log($e->getMessage(), 3, '/var/tmp/php.log');
 				  echo '{"error":{"text":'. $e->getMessage() .'}}';
