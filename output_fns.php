@@ -7,15 +7,41 @@ function do_html_header($title)
   <html>
   <head>
     <title><?php echo $title;?></title>
-    <style>
-      body { font-family: Arial, Helvetica, sans-serif; font-size: 13px }
-      li, td { font-family: Arial, Helvetica, sans-serif; font-size: 13px }
-      hr { color: #3333cc; width=300; text-align=left}
-      a { color: #000000 }
-    </style>
-	<link rel="stylesheet" href="bootstrap.min.css">
+   <link rel="stylesheet" href="bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <script src="jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
   <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="lightsMenu.php"><img src="assets/light-bulb-grey.svg" width="40" height="40" class="d-inline-block align-top" alt=""> Lighting<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><img src="assets/watering_grey.svg" width="30" height="30" class="d-inline-block align-top" alt="">Manage Irrigation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="change_passwd_form.php"><img src="assets/cam-grey.svg" width="30" height="30" class="d-inline-block align-top" alt=""> Security</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="change_passwd_form.php"><img src="assets/settings_greysvg.svg" width="30" height="30" class="d-inline-block align-top" alt="">Change Password</a>
+      </li>
+	   <li class="nav-item">
+        <a class="nav-link" href="logout.php"><img src="assets/settings_greysvg.svg" width="30" height="30" class="d-inline-block align-top" alt="">Logout</a>
+      </li>
+      <button type="button" class="btn btn-primary">
+        Notifications <span class="badge badge-light">4</span>
+      </button>
+    </ul>
+  </div>
+</nav>
   <h1>&nbsp;MIN Home Automation</h1>
   <hr />
 <?php
@@ -37,6 +63,7 @@ function do_html_heading($heading)
   // print heading
 ?>
   <h2><?php echo $heading;?></h2>
+ 
 <?php
 }
 
