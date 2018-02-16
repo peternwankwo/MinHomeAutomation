@@ -1,6 +1,5 @@
 // Global variables
 var piStatusObject;
-
 var switchConstants = {
     status : {
         on: 'ON',
@@ -23,28 +22,35 @@ function getStatus(sw) {
     if (status === switchConstants.status.off) {
         sw.setAttribute('status', switchConstants.status.off);
     } else {
-        sw.setAttribute('status', switchConstants.status.off);
+        sw.setAttribute('status', switchConstants.status.on);
     }
-
-    // Send status to API
-    setStatusToApi(status);
     console.log(sw.id + ':' + sw.getAttribute('status'));
 }
+
 function toggleSwitch(sw) {
     var status = sw.getAttribute('status');
     var previousStatus = status;
     status = (status === 'OFF') ? switchConstants.status.on : switchConstants.status.off;
+    var type = (sw.id === switchConstants.switches.light) ? switchConstants.types.light : switchConstants.types.water;
+
+    setSwitch(sw, status);
+    setStatusToApi(status, type);
     console.log('toggleSwitch:' + sw.id + '|previous status:' + previousStatus + '|current status:' + status);
 }
+
 function setSwitch(sw, prefferdStatus) {
     var status = sw.getAttribute('status');
     status = prefferdStatus;
-    sw.checked = (status == switchConstants.status.on) ? true : false;
+    sw.checked = (prefferdStatus === switchConstants.status.on) ? true : false;
+    sw.setAttribute('status', prefferdStatus);
     console.log('setSwitch:' + sw.id + '|' + status);
 }
-function setStatusToApi(st) {
+
+
+
+function setStatusToApi(st, type) {
     var status = (st == switchConstants.status.on) ? 1 : 0;
-    var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/Light/" + status;
+    var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/" + type + "/" + status;
     $.ajax({
         url: apiUrl,
         type: "GET",
@@ -82,7 +88,6 @@ function updateContols() {
             var apiSettings = aaa[obj];
             var statusFromApi = (apiSettings.status === '0') ? switchConstants.status.off : switchConstants.status.on;
 
-
             var switchSelector = (apiSettings.type === 'Light') ? 'switch1' : 'switch2';
             var sw = document.getElementById(switchSelector);
             if (sw) {
@@ -108,9 +113,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
             getStatusFromApi(type);
 
             // Add eventlistener for the specific switch
-            sw.addEventListener("click", function(event) {
-                getStatus(sw);
-            });
+            //sw.addEventListener("click", function(event) {
+            //setSwitch(sw);
+            //});
         }
     })
 });

@@ -35,7 +35,7 @@ if (isset($_POST['LightAUTO']))
   <label class="labelLight">Light</label>
   <span class="labelSwitchIsOff">OFF</span>
   <div>
-      <input id="switch1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" (click)="getStatus($event)">
+      <input id="switch1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" onclick="toggleSwitch(this)">
       <label id="switch1label" for="switch1"></label>
   </div>
   <span class="labelSwitchIsOn">ON</span>
@@ -46,7 +46,7 @@ if (isset($_POST['LightAUTO']))
   <label class="labelLight">Watering</label>
   <span class="labelSwitchIsOff">OFF</span>
   <div>
-      <input id="switch2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" (click)="getStatus($event)">
+      <input id="switch2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" onclick="toggleSwitch(this)">
       <label id="switch2label" for="switch2"></label>
   </div>
   <span class="labelSwitchIsOn">ON</span>
