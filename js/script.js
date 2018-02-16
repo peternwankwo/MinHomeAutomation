@@ -1,4 +1,4 @@
-function mySwitch(obj) {
+function getStatus(obj) {
     if (obj.getAttribute('status') === 'OFF') {
         obj.setAttribute('status', 'ON');
     } else {
@@ -10,7 +10,15 @@ function toggleSwitch(sw) {
     var status = sw.getAttribute('status');
     var previousStatus = status;
     status = (status === 'OFF') ? 'ON' : 'OFF';
-    alert(sw.id + '|previous status:' + previousStatus + '|current status:' + status);
+    console.log('toggleSwitch:' + sw.id + '|previous status:' + previousStatus + '|current status:' + status);
+}
+function setSwitch(sw, prefferdStatus) {
+    var status = sw.getAttribute('status');
+    status = prefferdStatus;
+
+    // DO The Magic
+
+    console.log('setSwitch:' + sw.id + '|' + status);
 }
 
 
@@ -18,11 +26,17 @@ function toggleSwitch(sw) {
 document.addEventListener("DOMContentLoaded", function(event) {
 
     // Call to API (to retrieve status)
+    var statusOfSwitch1FromAPI = 'ON';
+    var statusOfSwitch2FromAPI = 'ON';
 
     var switch1 = document.getElementById('switch1');
     var switch2 = document.getElementById('switch2');
     var switch3 = document.getElementById('switch3');
     if (switch1 && switch2 && switch3) {
-        toggleSwitch(switch1);
+
+        setSwitch(switch1, statusOfSwitch1FromAPI);
+        setSwitch(switch2, statusOfSwitch2FromAPI);
+
+        //toggleSwitch(switch1);
     }
 });
