@@ -13,6 +13,7 @@ function do_html_header($title)
       hr { color: #3333cc; width=300; text-align=left}
       a { color: #000000 }
     </style>
+	<link rel="stylesheet" href="bootstrap.min.css">
   </head>
   <body>
   <h1>&nbsp;MIN Home Automation</h1>
@@ -116,7 +117,7 @@ function display_user_menu()
 ?>
 <hr />
 <a href="member.php">Home</a> &nbsp;|&nbsp;
-<a href="#">Manage Lights</a> &nbsp;|&nbsp;
+<a href="lightsMenu.php">Manage Lights</a> &nbsp;|&nbsp;
 <a href="#">Manage Irrigation</a> &nbsp;|&nbsp;
 <a href="change_passwd_form.php">Manage Security</a>
 <br />
