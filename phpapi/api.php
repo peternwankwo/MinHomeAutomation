@@ -106,14 +106,14 @@ function ($key,$typeName,$status) use ($app) {
 					  $componentName = 'Watering System';
 				  }
 				  
-				  if($status == 0){
+				  if($typeName == 'Light' && $status == 0){
 					  $sql = "INSERT INTO componentUsage (`componentName`,`timeOff`,`type`,`status`)
 			VALUES ('$componentName',NOW(),'$typeName',$status)";
 			
 					exec("pkill -f lightsPIR2.py");
 					exec("python /var/www/html/MIN/lightsOFF.py");
 	
-				  }else{
+				  }else if($typeName == 'Light' && $status == 1){
 					//kill all processes started by the lightsPIR2.py
 					exec("pkill -f lightsPIR2.py");
 					//execute script to turn lightsON
@@ -122,6 +122,14 @@ function ($key,$typeName,$status) use ($app) {
 					  $sql = "INSERT INTO componentUsage (`componentName`,`timeOn`,`type`,`status`)
 			VALUES ('$componentName',NOW(),'$typeName',$status)";
 			
+				  }else if($typeName == 'Water' && $status == 1){
+					  exec("pkill -f irrigationsystem.py");
+					exec("python /var/www/html/MIN/irrigationsystemon.py");
+	
+				  }else if($typeName == 'Water' && $status == 0){
+					  exec("pkill -f irrigationsystem.py");
+					exec("python /var/www/html/MIN/irrigationsystemoff.py");
+					
 				  }
 				//echo $sql;
 
