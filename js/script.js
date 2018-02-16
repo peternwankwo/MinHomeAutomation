@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if (sw) {
             // Call to API (to retrieve status)
 
-            var type = (switchSelector === 'switch1') ? 'Light' ? 'Water';
+            var type = (switchSelector === 'switch1') ? 'Light' : 'Water';
             getStatusFromApi();
 
             // Add eventlistener for the specific switch
