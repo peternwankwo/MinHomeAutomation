@@ -56,18 +56,26 @@ function setSwitch(sw, prefferdStatus) {
 function setStatusToApi(st, type) {
     var status = (st == switchConstants.status.on) ? 1 : 0;
     var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/" + type + "/" + status;
+
     $.ajax({
         url: apiUrl,
         type: "GET",
-        success: function (result) {
+        sendStatus: status,
+        success: function (result, xhr, settings) {
             // Make settings globaly available
             piStatusObject = JSON.parse(result);
+            isValidService(this.sendStatus.toString(), piStatusObject.resultObj.serviceDetail[0].status);
             updateContols();
         },
         error: function (error) {
             console.log("Peters mobile network is not available, so also the API is not available!");
         }
     }, this);
+}
+function isValidService(sendStatus, retrievedStatus) {
+    if (sendStatus !== retrievedStatus) {
+        alert('Server is busy and can\'t execute the request. Please try again.' + '[' + sendStatus + '|' + retrievedStatus + ']');
+    }
 }
 function getStatusFromApi(type) {
     var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/" + type;
@@ -93,6 +101,24 @@ function updateContols() {
             var apiSettings = aaa[obj];
             var statusFromApi = (apiSettings.status === '0') ? switchConstants.status.off : switchConstants.status.on;
 
+            /*toggle the image of the lighting based on status*/
+            if(document.getElementById("light-on-status")){
+                if(statusFromApi === switchConstants.status.on){
+                    document.getElementById("light-on-status").src = "assets/light-bulb-green.svg";
+                }else{
+                    document.getElementById("light-on-status").src = "assets/light-bulb-grey.svg";
+                }
+            }
+
+            /*toggle the image of the watering based on status*/
+            if(document.getElementById("water-on-status")){
+                if(statusFromApi === switchConstants.status.on){
+                    document.getElementById("water-on-status").src = "assets/watering_green.svg";
+                }else{
+                    document.getElementById("water-on-status").src = "assets/watering_grey.svg";
+                }
+            }
+
             var switchSelector = (apiSettings.type === 'Light') ? 'switch1' : 'switch2';
             var sw = document.getElementById(switchSelector);
             if (sw) {
@@ -109,7 +135,10 @@ function updateContols() {
 function selectActiveNavigationItem(){
     // add class active to LI
     var activePage = getActivePage();
-    $('#' + activePage).addClass(' active');
+    try{
+        $('#' + activePage).addClass(' active');
+    }
+    catch(err){}
 }
 function getActivePage(){
     var url = $(location).attr('href'),
@@ -134,11 +163,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             // Call to API (to retrieve status)
             var type = (switchSelector === switchConstants.switches.light) ? switchConstants.types.light : switchConstants.types.water;
             getStatusFromApi(type);
-
-            // Add eventlistener for the specific switch
-            //sw.addEventListener("click", function(event) {
-            //setSwitch(sw);
-            //});
         }
     })
 });
