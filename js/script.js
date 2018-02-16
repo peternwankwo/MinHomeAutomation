@@ -1,9 +1,12 @@
+var piStatusObject;
+var switch1;
 
 var switchConstants = {
     status : {
         on: 'ON',
         off: 'OFF'
-    }
+    },
+    apiBaseUrl : 'http://192.168.43.172:9988'
 };
 
 function getStatus(sw) {
@@ -27,22 +30,42 @@ function setSwitch(sw, prefferdStatus) {
     console.log('setSwitch:' + sw.id + '|' + status);
 }
 
+function getStatusFromApi() {
+    var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/Light";
+    //var apiUrl = 'http://localhost/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/status';
+    $.ajax({
+        url: apiUrl,
+        type: "GET",
+        success: function (result) {
+            // Make settings globaly available
+            piStatusObject = JSON.parse(result);
+            updateContols();
+        },
+        error: function (error) {
+            alert("error" + this.url);
+        }
+    }, this);
+}
+function updateContols() {
+    // Controls on the page should reflect the truth (from API)
+    if (piStatusObject) {
+        var aaa = piStatusObject.resultObj.serviceDetail;
+        for (var obj in aaa) {
+            var apiSettings = aaa[obj];
+            var status = (apiSettings.Status === '0') ? switchConstants.status.off : switchConstants.status.on;
+            var sw = document.getElementById('switch1');
+            if (sw) {
+                setSwitch(sw, status);
+            }
+        }
 
-// YES BELOW CODE IS UGLY, but it WORKS!!!  I will refine it tomorrow...zzzz
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
-
-    // Call to API (to retrieve status)
-    var statusOfSwitch1FromAPI = switchConstants.status.off;
-    var statusOfSwitch2FromAPI = switchConstants.status.on;
-
-    var switch1 = document.getElementById('switch1');
-    var switch2 = document.getElementById('switch2');
-    var switch3 = document.getElementById('switch3');
-    if (switch1 && switch2 && switch3) {
-
-        setSwitch(switch1, statusOfSwitch1FromAPI);
-        setSwitch(switch2, statusOfSwitch2FromAPI);
-
-        //toggleSwitch(switch1);
+    switch1 = document.getElementById('switch1');
+    if (switch1) {
+        // Call to API (to retrieve status)
+        getStatusFromApi();
     }
 });
