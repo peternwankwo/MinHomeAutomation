@@ -7,17 +7,16 @@ function do_html_header($title)
   <html>
   <head>
     <title><?php echo $title;?></title>
-   <link rel="stylesheet" href="./bootstrap.min.css" >
-   <script src="./jquery-3.2.1.slim.min.js" ></script>
-<script src="./popper.min.js" ></script>
-<script src="./bootstrap.min.js" ></script>
-<link rel="stylesheet" href="./css/style.css" >
-
+	<link rel="stylesheet" href="./bootstrap.min.css" >
+	<script src="./jquery-3.2.1.slim.min.js" ></script>
+	<script src="./popper.min.js" ></script>
+	<script src="./bootstrap.min.js" ></script>
+	<link rel="stylesheet" href="./css/style.css" >
   </head>
   <body>
   <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -34,7 +33,7 @@ function do_html_header($title)
         <a class="nav-link" href="change_passwd_form.php"><img src="assets/cam-grey.svg" width="30" height="30" class="d-inline-block align-top" alt=""> Security</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="change_passwd_form.php"><img src="assets/settings_greysvg.svg" width="30" height="30" class="d-inline-block align-top" alt="">Change Password</a>
+        <a class="nav-link" href="change_passwd_form.php"><img src="assets/settings_greysvg.svg" width="30" height="30" class="d-inline-block align-top" alt="">Settings</a>
       </li>
 	   <li class="nav-item">
         <a class="nav-link" href="logout.php"><img src="assets/settings_greysvg.svg" width="30" height="30" class="d-inline-block align-top" alt="">Logout</a>
