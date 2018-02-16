@@ -97,6 +97,8 @@ function updateContols() {
     // Controls on the page should reflect the truth (from API)
     if (piStatusObject) {
         var aaa = piStatusObject.resultObj.serviceDetail;
+
+        // Currently it is still only one object
         for (var obj in aaa) {
             var apiSettings = aaa[obj];
             var statusFromApi = (apiSettings.status === '0') ? switchConstants.status.off : switchConstants.status.on;
@@ -128,9 +130,43 @@ function updateContols() {
                     setSwitch(sw, statusFromApi);
                 }
             }
+            var notification = $('#notification');
+            if (notification && apiSettings.timeOn !== '0000-00-00 00:00:00' && apiSettings.type == switchConstants.types.water) {
+                notification.empty();
+                var dateObject = new Date(apiSettings.timeOn);
+                var format = "YYYY-MMM-DD DDD";
+
+                notification.append('<span>Last watered:</span> <span>' + formatDate(dateObject) + '</span>');
+                notification.removeClass('d-none');
+            } else if (notification && apiSettings.timeOff !== '0000-00-00 00:00:00' && apiSettings.type == switchConstants.types.water) {
+                notification.empty();
+                var dateObject = new Date(apiSettings.timeOff);
+                notification.append('<span>Last watered:</span> <span>' + formatDate(dateObject) + '</span>');
+                notification.removeClass('d-none');
+            }
+
         }
 
     }
+}
+function formatDate(date) {
+    var monthNames = [
+        "Januari", "Februari", "Maart",
+        "April", "Mei", "Juni", "Juli",
+        "Augustus", "September", "Oktober",
+        "November", "December"
+    ];
+
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    var miniseconds = date.getMilliseconds();
+
+    return day + ' ' + monthNames[monthIndex] + ' ' + year + ' ' + hours + ':' + minutes + ':' + seconds;
 }
 function selectActiveNavigationItem(){
     // add class active to LI
@@ -159,7 +195,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var arrSwitches = [switchConstants.switches.light, switchConstants.switches.water];
     arrSwitches.forEach(function(switchSelector) {
         sw = document.getElementById(switchSelector);
-        if (sw) {
+
+        // Only continue if: watering.html => water
+        // Only continue if: lighting.html => light
+        var activePage = getActivePage();
+        var isLightingPage = ((switchConstants.navigation.lighting.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.light));
+        var isWateringPage = ((switchConstants.navigation.watering.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.water));
+        if (sw && (isWateringPage || isLightingPage)) {
             // Call to API (to retrieve status)
             var type = (switchSelector === switchConstants.switches.light) ? switchConstants.types.light : switchConstants.types.water;
             getStatusFromApi(type);
