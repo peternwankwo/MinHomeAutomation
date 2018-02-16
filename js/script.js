@@ -74,7 +74,7 @@ function setStatusToApi(st, type) {
 }
 function isValidService(sendStatus, retrievedStatus) {
     if (sendStatus !== retrievedStatus) {
-        alert('API Service is not working properly, please fix it!');
+        alert('API Service is not working properly, please fix it!' + '[' + sendStatus + '|' + retrievedStatus + ']');
     }
 }
 function getStatusFromApi(type) {
