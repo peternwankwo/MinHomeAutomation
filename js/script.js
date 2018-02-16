@@ -60,11 +60,11 @@ function setStatusToApi(st, type) {
     $.ajax({
         url: apiUrl,
         type: "GET",
+        sendStatus: status,
         success: function (result, xhr, settings) {
             // Make settings globaly available
-            var sendStatus = status;
             piStatusObject = JSON.parse(result);
-            isValidService(status.toString(), piStatusObject.resultObj.serviceDetail[0].status);
+            isValidService(this.sendStatus.toString(), piStatusObject.resultObj.serviceDetail[0].status);
             updateContols();
         },
         error: function (error) {
@@ -117,7 +117,10 @@ function updateContols() {
 function selectActiveNavigationItem(){
     // add class active to LI
     var activePage = getActivePage();
-    $('#' + activePage).addClass(' active');
+    try{
+        $('#' + activePage).addClass(' active');
+    }
+    catch(err){}
 }
 function getActivePage(){
     var url = $(location).attr('href'),
