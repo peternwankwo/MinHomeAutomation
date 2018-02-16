@@ -101,6 +101,12 @@ function updateContols() {
             var apiSettings = aaa[obj];
             var statusFromApi = (apiSettings.status === '0') ? switchConstants.status.off : switchConstants.status.on;
 
+            if(statusFromApi === switchConstants.status.on){
+                document.getElementById("light-on-status").src = "assets/light-bulb-green.svg";
+            }else{
+                document.getElementById("light-on-status").src = "assets/light-bulb-grey.svg";
+            }
+
             var switchSelector = (apiSettings.type === 'Light') ? 'switch1' : 'switch2';
             var sw = document.getElementById(switchSelector);
             if (sw) {
