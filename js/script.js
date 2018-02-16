@@ -6,13 +6,13 @@ var switchConstants = {
     }
 };
 
-function getStatus(obj) {
-    if (obj.getAttribute('status') === switchConstants.status.off) {
-        obj.setAttribute('status', switchConstants.status.on);
+function getStatus(sw) {
+    if (sw.getAttribute('status') === switchConstants.status.off) {
+        sw.setAttribute('status', switchConstants.status.on);
     } else {
-        obj.setAttribute('status', switchConstants.status.off);
+        sw.setAttribute('status', switchConstants.status.off);
     }
-    console.log(obj.id + ':' + obj.getAttribute('status'));
+    console.log(sw.id + ':' + sw.getAttribute('status'));
 }
 function toggleSwitch(sw) {
     var status = sw.getAttribute('status');
