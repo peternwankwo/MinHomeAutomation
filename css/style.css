@@ -104,8 +104,12 @@ div.switch div {
     margin: 6px;
 }
 
-#container {
+#container-now {
 	height: 300px;
 	min-width: 310px;
 	max-width: 800px;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    
 }
