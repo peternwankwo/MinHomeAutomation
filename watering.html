@@ -16,6 +16,10 @@
     <script src="./popper.min.js"></script>
     <script src="./bootstrap.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css" >
+    <script src="./js/script.js" ></script>
+
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 </head>
@@ -75,6 +79,23 @@
         <div class="col border border-primary border-top-0">
             <a href="#"><img class="rounded mx-auto p-2 d-block" src="assets/watering_grey.svg" alt="" width="150" height="150"></a>
             <h5 class="text-center text-success">Watering Plants</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-2 ml-2">
+            <h5 class="text-success pl-2">Lightning Switch</h5>
+        </div>
+        <div class="col p-2  text-center">
+
+            <div class="switch">
+                <label class="labelLight">Watering</label>
+                <span class="labelSwitchIsOff">OFF</span>
+                <div>
+                    <input id="switch2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" onclick="toggleSwitch(this)">
+                    <label id="switch2label" for="switch2"></label>
+                </div>
+                <span class="labelSwitchIsOn">ON</span>
+            </div>
         </div>
     </div>
 </form>
