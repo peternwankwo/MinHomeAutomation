@@ -19,7 +19,7 @@ $app->get('/v1/:name', function ($name) {
     echo "Hello, $name";
 });
 
-$app->get('/v1/:key/status',
+$app->get('/v1/:key/services',
 function ($key) use ($app) {
    try{
 	if($key == 'cOjxzK4vGc7310'){
@@ -28,8 +28,7 @@ function ($key) use ($app) {
 			   try {
 
 				  $result = null;
-
-					$sql = "SELECT * FROM componentusage";
+					$sql = "SELECT DISTINCT Type FROM componentUsage";
 
 					$db = getDB();
 					$stmt = $db->prepare($sql);
@@ -54,8 +53,8 @@ function ($key) use ($app) {
    }
 });
 
-$app->get('/v1/:key/:userid/:serviceid',
-function ($key,$userid,$serviceid) use ($app) {
+$app->get('/v1/:key/services/:typeName',
+function ($key,$typeName) use ($app) {
    try{
 	if($key == 'cOjxzK4vGc7310'){
     $request = $app->request();
@@ -64,16 +63,79 @@ function ($key,$userid,$serviceid) use ($app) {
 
 				  $result = null;
 
-					$sql = "SELECT * FROM userserviceusage WHERE userid = $userid AND serviceid = $serviceid";
-
+					//$sql = "SELECT max(compUsageId) AS compUsageId, componentName, componentLocation,floorLocaltion,timeOn,timeOff,type,status FROM componentusage WHERE type = '$typeName'";
+					$sql = "SELECT * FROM componentUsage WHERE type = '$typeName' ORDER BY usageId DESC LIMIT 1;";
 					$db = getDB();
 					$stmt = $db->prepare($sql);
 					$stmt->execute();
 					 $allRoutes = $stmt->fetchAll();
 					 $db = null;
 					 $result = null;
-					 $result = '{"resultObj":{"servicestatus":'.json_encode($allRoutes).',"status":"SUCCESS"}}';
+					 $result = '{"resultObj":{"serviceDetail":'.json_encode($allRoutes).',"status":"SUCCESS"}}';
 
+				  echo $result;
+				  
+			   } catch(PDOException $e) {
+				  //error_log($e->getMessage(), 3, '/var/tmp/php.log');
+				  echo '{"error":{"text":'. $e->getMessage() .'}}';
+			   }
+	}else{
+		 echo '{"error":{"text":"Invalid API key"}}';
+	}
+}catch(PDOException $e) {
+      //error_log($e->getMessage(), 3, '/var/tmp/php.log');
+      echo '{"error":{"text":'. $e->getMessage() .'}}';
+   }
+});
+
+$app->get('/v1/:key/services/:typeName/:status',
+function ($key,$typeName,$status) use ($app) {
+   try{
+	if($key == 'cOjxzK4vGc7310'){
+    $request = $app->request();
+   
+			   try {
+
+				  $sql = null;
+				  $result = null;
+				  $componentName = 'Security System';
+				    
+				  if($typeName == 'Light'){
+					  $componentName = 'Lightning System';
+				  }else if($typeName == 'Water'){
+					  $componentName = 'Watering System';
+				  }
+				  
+				  if($status == 0){
+					  $sql = "INSERT INTO componentUsage (`componentName`,`timeOff`,`type`,`status`)
+			VALUES ('$componentName',NOW(),'$typeName',$status)";
+				  }else{
+					  $sql = "INSERT INTO componentUsage (`componentName`,`timeOn`,`type`,`status`)
+			VALUES ('$componentName',NOW(),'$typeName',$status)";
+				  }
+				//echo $sql;
+
+					$db = getDB();
+					$stmt = $db->prepare($sql);
+					$res = $stmt->execute();
+					
+					if ($res !=0 ) {
+						// $sql = "SELECT max(compUsageId) AS compUsageId, componentName, componentLocation,floorLocaltion,timeOn,timeOff,type,status FROM componentusage WHERE type = '$typeName'";
+						$sql = "SELECT * FROM componentUsage WHERE type = '$typeName' ORDER BY usageId DESC LIMIT 1;";
+					$db = getDB();
+					$stmt = $db->prepare($sql);
+					$stmt->execute();
+					 $allRoutes = $stmt->fetchAll();
+					 $db = null;
+					 $result = null;
+					 $result = '{"resultObj":{"serviceDetail":'.json_encode($allRoutes).',"status":"SUCCESS"}}';
+
+					  }else{
+						 $result = "FAILURE";
+					  }
+		  
+					 $db = null;
+					
 				  echo $result;
 
 			   } catch(PDOException $e) {
