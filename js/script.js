@@ -56,18 +56,26 @@ function setSwitch(sw, prefferdStatus) {
 function setStatusToApi(st, type) {
     var status = (st == switchConstants.status.on) ? 1 : 0;
     var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/" + type + "/" + status;
+
     $.ajax({
         url: apiUrl,
         type: "GET",
-        success: function (result) {
+        success: function (result, xhr, settings) {
             // Make settings globaly available
+            var sendStatus = status;
             piStatusObject = JSON.parse(result);
+            isValidService(status.toString(), piStatusObject.resultObj.serviceDetail[0].status);
             updateContols();
         },
         error: function (error) {
             console.log("Peters mobile network is not available, so also the API is not available!");
         }
     }, this);
+}
+function isValidService(sendStatus, retrievedStatus) {
+    if (sendStatus !== retrievedStatus) {
+        alert('API Service is not working properly, please fix it!' + '[' + sendStatus + '|' + retrievedStatus + ']');
+    }
 }
 function getStatusFromApi(type) {
     var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/" + type;
@@ -134,11 +142,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             // Call to API (to retrieve status)
             var type = (switchSelector === switchConstants.switches.light) ? switchConstants.types.light : switchConstants.types.water;
             getStatusFromApi(type);
-
-            // Add eventlistener for the specific switch
-            //sw.addEventListener("click", function(event) {
-            //setSwitch(sw);
-            //});
         }
     })
 });
