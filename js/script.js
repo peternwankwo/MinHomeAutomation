@@ -56,18 +56,26 @@ function setSwitch(sw, prefferdStatus) {
 function setStatusToApi(st, type) {
     var status = (st == switchConstants.status.on) ? 1 : 0;
     var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/" + type + "/" + status;
+
     $.ajax({
         url: apiUrl,
         type: "GET",
-        success: function (result) {
+        success: function (result, xhr, settings) {
             // Make settings globaly available
+            var sendStatus = status;
             piStatusObject = JSON.parse(result);
+            isValidService(status.toString(), piStatusObject.resultObj.serviceDetail[0].status);
             updateContols();
         },
         error: function (error) {
             alert("Peters mobile network is not available, so also the API is not available!");
         }
     }, this);
+}
+function isValidService(sendStatus, retrievedStatus) {
+    if (sendStatus !== retrievedStatus) {
+        alert('API Service is not working properly, please fix it!');
+    }
 }
 function getStatusFromApi(type) {
     var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/" + type;
@@ -134,83 +142,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             // Call to API (to retrieve status)
             var type = (switchSelector === switchConstants.switches.light) ? switchConstants.types.light : switchConstants.types.water;
             getStatusFromApi(type);
-
-            // Add eventlistener for the specific switch
-            //sw.addEventListener("click", function(event) {
-            //setSwitch(sw);
-            //});
         }
     })
-     var chart = Highcharts.chart('container', {
-
-        chart: {
-            type: 'column'
-        },
-
-        title: {
-            text: 'Usage statistics'
-        },
-        legend: {
-            align: 'right',
-            verticalAlign: 'middle',
-            layout: 'vertical'
-        },
-
-        xAxis: {
-            categories: ['Light', 'Water', 'Security'],
-            labels: {
-                x: -10
-            }
-        },
-
-        yAxis: {
-            allowDecimals: false,
-            title: {
-                text: 'Longetivity in Yrs'
-            }
-        },
-
-        series: [{
-            name: 'Current usage',
-            data: [1,3,1]
-        }, {
-            name: 'Expected life',
-            data: [5,6,4.5]
-        },{
-            name: 'Average life expectancy',
-            data: [8, 6, 5]
-        }],
-
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        align: 'center',
-                        verticalAlign: 'bottom',
-                        layout: 'horizontal'
-                    },
-                    yAxis: {
-                        labels: {
-                            align: 'left',
-                            x: 0,
-                            y: -5
-                        },
-                        title: {
-                            text: null
-                        }
-                    },
-                    subtitle: {
-                        text: null
-                    },
-                    credits: {
-                        enabled: false
-                    }
-                }
-            }]
-        }
-    });
 });
 
