@@ -13,7 +13,7 @@ var switchConstants = {
         light: 'Light',
         water: 'Water'
     },
-    apiBaseUrl : 'http://192.168.43.172:9988',
+    apiBaseUrl : 'http://192.168.101.149/MIN',
     navigation:{
         lighting: 'lighting.html',
         security: 'security.html',
