@@ -65,7 +65,7 @@ function ($key,$typeName) use ($app) {
 				  $result = null;
 
 					//$sql = "SELECT max(compUsageId) AS compUsageId, componentName, componentLocation,floorLocaltion,timeOn,timeOff,type,status FROM componentusage WHERE type = '$typeName'";
-					$sql = "SELECT * FROM componentusage WHERE type = '$typeName' ORDER BY compUsageId DESC LIMIT 1;";
+					$sql = "SELECT * FROM componentusage WHERE type = '$typeName' ORDER BY usageId DESC LIMIT 1;";
 					$db = getDB();
 					$stmt = $db->prepare($sql);
 					$stmt->execute();
@@ -122,7 +122,7 @@ function ($key,$typeName,$status) use ($app) {
 					
 					if ($res !=0 ) {
 						// $sql = "SELECT max(compUsageId) AS compUsageId, componentName, componentLocation,floorLocaltion,timeOn,timeOff,type,status FROM componentusage WHERE type = '$typeName'";
-						$sql = "SELECT * FROM componentusage WHERE type = '$typeName' ORDER BY compUsageId DESC LIMIT 1;";
+						$sql = "SELECT * FROM componentusage WHERE type = '$typeName' ORDER BY usageId DESC LIMIT 1;";
 					$db = getDB();
 					$stmt = $db->prepare($sql);
 					$stmt->execute();
