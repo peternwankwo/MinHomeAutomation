@@ -1,6 +1,6 @@
+// Global variables
 var piStatusObject;
 var switch1;
-
 var switchConstants = {
     status : {
         on: 'ON',
@@ -9,6 +9,7 @@ var switchConstants = {
     apiBaseUrl : 'http://192.168.43.172:9988'
 };
 
+// Functions
 function getStatus(sw) {
     var status = sw.getAttribute('status');
     if (status === switchConstants.status.off) {
@@ -34,8 +35,6 @@ function setSwitch(sw, prefferdStatus) {
     sw.checked = (status == switchConstants.status.on) ? true : false;
     console.log('setSwitch:' + sw.id + '|' + status);
 }
-
-
 function setStatusToApi(st) {
     var status = (st == switchConstants.status.on) ? 1 : 0;
     var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/Light/" + status;
@@ -89,6 +88,7 @@ function updateContols() {
     }
 }
 
+// Event Listener
 document.addEventListener("DOMContentLoaded", function(event) {
     switch1 = document.getElementById('switch1');
     if (switch1) {
@@ -101,5 +101,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
             getStatus(sw);
         });
     }
-
 });
