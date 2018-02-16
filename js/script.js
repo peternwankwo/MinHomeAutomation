@@ -65,7 +65,7 @@ function setStatusToApi(st, type) {
             updateContols();
         },
         error: function (error) {
-            alert("Peters mobile network is not available, so also the API is not available!");
+            console.log("Peters mobile network is not available, so also the API is not available!");
         }
     }, this);
 }
@@ -81,7 +81,7 @@ function getStatusFromApi(type) {
             updateContols();
         },
         error: function (error) {
-            alert("Peters mobile network is not available, so also the API is not available!");
+            console.log("Peters mobile network is not available, so also the API is not available!");
         }
     }, this);
 }
@@ -141,76 +141,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
             //});
         }
     })
-     var chart = Highcharts.chart('container', {
-
-        chart: {
-            type: 'column'
-        },
-
-        title: {
-            text: 'Usage statistics'
-        },
-        legend: {
-            align: 'right',
-            verticalAlign: 'middle',
-            layout: 'vertical'
-        },
-
-        xAxis: {
-            categories: ['Light', 'Water', 'Security'],
-            labels: {
-                x: -10
-            }
-        },
-
-        yAxis: {
-            allowDecimals: false,
-            title: {
-                text: 'Longetivity in Yrs'
-            }
-        },
-
-        series: [{
-            name: 'Current usage',
-            data: [1,3,1]
-        }, {
-            name: 'Expected life',
-            data: [5,6,4.5]
-        },{
-            name: 'Average life expectancy',
-            data: [8, 6, 5]
-        }],
-
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        align: 'center',
-                        verticalAlign: 'bottom',
-                        layout: 'horizontal'
-                    },
-                    yAxis: {
-                        labels: {
-                            align: 'left',
-                            x: 0,
-                            y: -5
-                        },
-                        title: {
-                            text: null
-                        }
-                    },
-                    subtitle: {
-                        text: null
-                    },
-                    credits: {
-                        enabled: false
-                    }
-                }
-            }]
-        }
-    });
 });
 
