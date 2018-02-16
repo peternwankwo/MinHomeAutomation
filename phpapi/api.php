@@ -28,7 +28,7 @@ function ($key) use ($app) {
 			   try {
 
 				  $result = null;
-					$sql = "SELECT DISTINCT Type FROM componentusage";
+					$sql = "SELECT DISTINCT Type FROM componentUsage";
 
 					$db = getDB();
 					$stmt = $db->prepare($sql);
@@ -64,7 +64,7 @@ function ($key,$typeName) use ($app) {
 				  $result = null;
 
 					//$sql = "SELECT max(compUsageId) AS compUsageId, componentName, componentLocation,floorLocaltion,timeOn,timeOff,type,status FROM componentusage WHERE type = '$typeName'";
-					$sql = "SELECT * FROM componentusage WHERE type = '$typeName' ORDER BY usageId DESC LIMIT 1;";
+					$sql = "SELECT * FROM componentUsage WHERE type = '$typeName' ORDER BY usageId DESC LIMIT 1;";
 					$db = getDB();
 					$stmt = $db->prepare($sql);
 					$stmt->execute();
@@ -107,10 +107,10 @@ function ($key,$typeName,$status) use ($app) {
 				  }
 				  
 				  if($status == 0){
-					  $sql = "INSERT INTO componentusage (`componentName`,`timeOff`,`type`,`status`)
+					  $sql = "INSERT INTO componentUsage (`componentName`,`timeOff`,`type`,`status`)
 			VALUES ('$componentName',NOW(),'$typeName',$status)";
 				  }else{
-					  $sql = "INSERT INTO componentusage (`componentName`,`timeOn`,`type`,`status`)
+					  $sql = "INSERT INTO componentUsage (`componentName`,`timeOn`,`type`,`status`)
 			VALUES ('$componentName',NOW(),'$typeName',$status)";
 				  }
 				//echo $sql;
@@ -121,7 +121,7 @@ function ($key,$typeName,$status) use ($app) {
 					
 					if ($res !=0 ) {
 						// $sql = "SELECT max(compUsageId) AS compUsageId, componentName, componentLocation,floorLocaltion,timeOn,timeOff,type,status FROM componentusage WHERE type = '$typeName'";
-						$sql = "SELECT * FROM componentusage WHERE type = '$typeName' ORDER BY usageId DESC LIMIT 1;";
+						$sql = "SELECT * FROM componentUsage WHERE type = '$typeName' ORDER BY usageId DESC LIMIT 1;";
 					$db = getDB();
 					$stmt = $db->prepare($sql);
 					$stmt->execute();
