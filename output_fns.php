@@ -11,6 +11,8 @@ function do_html_header($title)
    <script src="./jquery-3.2.1.slim.min.js" ></script>
 <script src="./popper.min.js" ></script>
 <script src="./bootstrap.min.js" ></script>
+<link rel="stylesheet" href="./css/style.css" >
+
   </head>
   <body>
   <div class="container">
@@ -65,7 +67,7 @@ function do_html_heading($heading)
   // print heading
 ?>
   <h2><?php echo $heading;?></h2>
- 
+
 <?php
 }
 
