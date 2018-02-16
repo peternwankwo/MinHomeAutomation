@@ -1,3 +1,4 @@
+
 <?php
   require_once('min_auto_fns.php');
   session_start();
@@ -28,3 +29,4 @@
   display_user_menu(); 
   do_html_footer();
 ?>
+
