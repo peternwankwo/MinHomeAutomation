@@ -13,7 +13,14 @@ var switchConstants = {
         light: 'Light',
         water: 'Water'
     },
-    apiBaseUrl : 'http://192.168.101.149/MIN'
+    apiBaseUrl : 'http://192.168.101.149/MIN',
+    navigation:{
+        lighting: 'lighting.html',
+        security: 'security.html',
+        watering: 'watering.html',
+        settings: 'settings.html',
+        statistics: 'statistics.html'
+    }
 };
 
 // Functions
@@ -45,8 +52,6 @@ function setSwitch(sw, prefferdStatus) {
     sw.setAttribute('status', prefferdStatus);
     console.log('setSwitch:' + sw.id + '|' + status);
 }
-
-
 
 function setStatusToApi(st, type) {
     var status = (st == switchConstants.status.on) ? 1 : 0;
@@ -101,9 +106,27 @@ function updateContols() {
 
     }
 }
+function selectActiveNavigationItem(){
+    // add class active to LI
+    var activePage = getActivePage();
+    $('#' + activePage).addClass(' active');
+}
+function getActivePage(){
+    var url = $(location).attr('href'),
+        parts = url.split("/"),
+        last_part = parts[parts.length-2];
+    return parts[parts.length-1].replace('.html','');
+}
 
 // Event Listener
 document.addEventListener("DOMContentLoaded", function(event) {
+
+    // Load the navigation-code-snippet into the placeholder
+    $( "#navbarTogglerDemo02" ).load("./html/navigation.html",function() {
+        selectActiveNavigationItem();
+    });
+
+
     var arrSwitches = [switchConstants.switches.light, switchConstants.switches.water];
     arrSwitches.forEach(function(switchSelector) {
         sw = document.getElementById(switchSelector);
@@ -118,5 +141,76 @@ document.addEventListener("DOMContentLoaded", function(event) {
             //});
         }
     })
+     var chart = Highcharts.chart('container', {
+
+        chart: {
+            type: 'column'
+        },
+
+        title: {
+            text: 'Usage statistics'
+        },
+        legend: {
+            align: 'right',
+            verticalAlign: 'middle',
+            layout: 'vertical'
+        },
+
+        xAxis: {
+            categories: ['Light', 'Water', 'Security'],
+            labels: {
+                x: -10
+            }
+        },
+
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Longetivity in Yrs'
+            }
+        },
+
+        series: [{
+            name: 'Current usage',
+            data: [1,3,1]
+        }, {
+            name: 'Expected life',
+            data: [5,6,4.5]
+        },{
+            name: 'Average life expectancy',
+            data: [8, 6, 5]
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        align: 'center',
+                        verticalAlign: 'bottom',
+                        layout: 'horizontal'
+                    },
+                    yAxis: {
+                        labels: {
+                            align: 'left',
+                            x: 0,
+                            y: -5
+                        },
+                        title: {
+                            text: null
+                        }
+                    },
+                    subtitle: {
+                        text: null
+                    },
+                    credits: {
+                        enabled: false
+                    }
+                }
+            }]
+        }
+    });
 });
 

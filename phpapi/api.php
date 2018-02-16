@@ -109,16 +109,27 @@ function ($key,$typeName,$status) use ($app) {
 				  if($status == 0){
 					  $sql = "INSERT INTO componentUsage (`componentName`,`timeOff`,`type`,`status`)
 			VALUES ('$componentName',NOW(),'$typeName',$status)";
+			
+					exec("pkill -f lightsPIR2.py");
+					exec("python /var/www/html/MIN/lightsOFF.py");
+	
 				  }else{
+					//kill all processes started by the lightsPIR2.py
+					exec("pkill -f lightsPIR2.py");
+					//execute script to turn lightsON
+					exec("python /var/www/html/MIN/lightsON2.py");
+					
 					  $sql = "INSERT INTO componentUsage (`componentName`,`timeOn`,`type`,`status`)
 			VALUES ('$componentName',NOW(),'$typeName',$status)";
+			
 				  }
 				//echo $sql;
 
-					$db = getDB();
-					$stmt = $db->prepare($sql);
-					$res = $stmt->execute();
+					//$db = getDB();
+					//$stmt = $db->prepare($sql);
+					//$res = $stmt->execute();
 					
+					$res = 1;
 					if ($res !=0 ) {
 						// $sql = "SELECT max(compUsageId) AS compUsageId, componentName, componentLocation,floorLocaltion,timeOn,timeOff,type,status FROM componentusage WHERE type = '$typeName'";
 						$sql = "SELECT * FROM componentUsage WHERE type = '$typeName' ORDER BY usageId DESC LIMIT 1;";

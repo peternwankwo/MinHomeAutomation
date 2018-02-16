@@ -32,31 +32,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="lighting-overview.html"><img src="assets/light-bulb-white.svg" width="40"
-                                                                           height="40"
-                                                                           class="d-inline-block align-top" alt="">
-                        Lighting<span
-                                class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="watering.html"><img src="assets/watering_white.svg" width="30" height="30"
-                                                                  class="d-inline-block align-top" alt=""> Watering
-                        Plants</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="security.html"><img src="assets/cam-white.svg" width="30" height="30"
-                                                                  class="d-inline-block align-top" alt=""> Security</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="settings.html"><img src="assets/settings_white.svg" width="30"
-                                                                  height="30"
-                                                                  class="d-inline-block align-top" alt=""> Settings</a>
-                </li>
-            </ul>
-        </div>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
 
         <div class="btn-group">
             <button class="btn">Notifications</button>
@@ -93,13 +69,13 @@
         <div class="col p-2  text-center">
 
             <div class="switch">
-                <label class="labelLight">Light</label>
-                <span class="labelSwitchIsOff">OFF</span>
+                <label class="labelLight"></label>
+                <span class="labelSwitchIsOff"></span>
                 <div>
                     <input id="switch1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" onclick="toggleSwitch(this)">
                     <label id="switch1label" for="switch1"></label>
                 </div>
-                <span class="labelSwitchIsOn">ON</span>
+                <span class="labelSwitchIsOn"></span>
             </div>
 
         </div>
@@ -109,10 +85,15 @@
             <h5 class="text-success pl-2">Motion Detection</h5>
         </div>
         <div class="col p-2  text-center">
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
+            <div class="switch text-center">
+                <label class="labelLight"></label>
+                <span class="labelSwitchIsOff"></span>
+                <div>
+                    <input id="switch1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" onclick="toggleSwitch(this)">
+                    <label id="switch1label" for="switch1"></label>
+                </div>
+                <span class="labelSwitchIsOn"></span>
+            </div>
         </div>
     </div>
     <div class="row">
