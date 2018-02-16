@@ -1,21 +1,29 @@
+
+var switchConstants = {
+    status : {
+        on: 'ON',
+        off: 'OFF'
+    }
+};
+
 function getStatus(obj) {
-    if (obj.getAttribute('status') === 'OFF') {
-        obj.setAttribute('status', 'ON');
+    if (obj.getAttribute('status') === switchConstants.status.off) {
+        obj.setAttribute('status', switchConstants.status.on);
     } else {
-        obj.setAttribute('status', 'OFF');
+        obj.setAttribute('status', switchConstants.status.off);
     }
     console.log(obj.id + ':' + obj.getAttribute('status'));
 }
 function toggleSwitch(sw) {
     var status = sw.getAttribute('status');
     var previousStatus = status;
-    status = (status === 'OFF') ? 'ON' : 'OFF';
+    status = (status === 'OFF') ? switchConstants.status.on : switchConstants.status.off;
     console.log('toggleSwitch:' + sw.id + '|previous status:' + previousStatus + '|current status:' + status);
 }
 function setSwitch(sw, prefferdStatus) {
     var status = sw.getAttribute('status');
     status = prefferdStatus;
-    sw.checked = (status == 'ON') ? true : false;
+    sw.checked = (status == switchConstants.status.on) ? true : false;
     console.log('setSwitch:' + sw.id + '|' + status);
 }
 
@@ -24,8 +32,8 @@ function setSwitch(sw, prefferdStatus) {
 document.addEventListener("DOMContentLoaded", function(event) {
 
     // Call to API (to retrieve status)
-    var statusOfSwitch1FromAPI = 'ON';
-    var statusOfSwitch2FromAPI = 'ON';
+    var statusOfSwitch1FromAPI = switchConstants.status.off;
+    var statusOfSwitch2FromAPI = switchConstants.status.on;
 
     var switch1 = document.getElementById('switch1');
     var switch2 = document.getElementById('switch2');
