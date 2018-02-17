@@ -16,7 +16,10 @@ pubnub.addListener({
 					if (document.getElementById('alertProfile').classList.contains("d-none")) {
 						document.getElementById('alertProfile').classList.remove("d-none");
 						var greetUser = '<span> Welcome :: ' + result.shadow.name + '</span>';
-						$('#profileInfo').html(greetUser);			
+						$('#profileInfo').html(greetUser);
+						document.getElementById('alertLight').classList.add("alert-warning");
+						$('#profileLight').html('<span>Your <b>lighting</b> preferences is set to Red</span>')
+
 					}
 					if (document.getElementById('alertAdd').classList.contains("d-none")) {
 						document.getElementById('alertAdd').classList.remove("d-none");
