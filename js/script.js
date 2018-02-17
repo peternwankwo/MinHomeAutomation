@@ -40,14 +40,7 @@ function toggleSwitch(sw) {
     var status = sw.getAttribute('status');
     var previousStatus = status;
     status = (status === 'OFF') ? switchConstants.status.on : switchConstants.status.off;
-    var type;
-    if (sw.id === switchConstants.switches.light) {
-        type = switchConstants.types.light
-    } else if (sw.id === switchConstants.switches.water) {
-        type = switchConstants.types.water
-    } else if (sw.id === switchConstants.switches.motion) {
-        type = switchConstants.types.motion
-    }
+    var type = getType(sw.id);
 
     setSwitch(sw, status);
     setStatusToApi(status, type);
@@ -63,6 +56,7 @@ function setSwitch(sw, prefferdStatus) {
 }
 
 function setStatusToApi(st, type) {
+    console.log('setStatusToApi method:' + type);
     var status = (st == switchConstants.status.on) ? 1 : 0;
     var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/" + type + "/" + status;
 
@@ -87,6 +81,7 @@ function isValidService(sendStatus, retrievedStatus) {
     }
 }
 function getStatusFromApi(type) {
+    console.log('getStatusFromApi method:' + type);
     var apiUrl = switchConstants.apiBaseUrl + "/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/services/" + type;
     //var apiUrl = 'http://localhost/MinHomeAutomation/phpapi/api.php/v1/cOjxzK4vGc7310/status';
     $.ajax({
@@ -201,6 +196,29 @@ function getActivePage(){
         last_part = parts[parts.length-2];
     return parts[parts.length-1].replace('.html','');
 }
+function getType(selector) {
+    var type;
+    if (selector === switchConstants.switches.light) {
+        type = switchConstants.types.light
+    } else if (selector === switchConstants.switches.water) {
+        type = switchConstants.types.water
+    } else if (selector === switchConstants.switches.motion) {
+        type = switchConstants.types.motion
+    }
+    return type;
+}
+function activateListener(switchSelector, type){
+    //  Listener that constantly checks the lights and this should be visible via the switch controls
+    var i = 0;
+    function listenToApi() {
+        setInterval(function() { // this code is executed every 5 seconds:
+            getStatusFromApi(type);
+            i++;
+        }, 5000);
+    }
+    $(listenToApi);
+}
+
 
 // Event Listener
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -210,11 +228,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     var arrSwitches = [switchConstants.switches.light, switchConstants.switches.water, switchConstants.switches.motion];
+
+
     arrSwitches.forEach(function(switchSelector) {
         sw = document.getElementById(switchSelector);
-
         // Only continue if: watering.html => water
-        // Only continue if: lighting.html => light
+        // Only continue if: lighting.html => light and motion
         var activePage = getActivePage();
         var isLightingPage = ((switchConstants.navigation.lighting.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.light));
         var isWateringPage = ((switchConstants.navigation.watering.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.water));
@@ -222,16 +241,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         if (sw && (isWateringPage || isLightingPage || isMotionPage)) {
             // Call to API (to retrieve status)
-            var type;
-            if (switchSelector === switchConstants.switches.light) {
-                type = switchConstants.types.light
-            } else if (switchSelector === switchConstants.switches.water) {
-                type = switchConstants.types.water
-            } else if (switchSelector === switchConstants.switches.motion) {
-                type = switchConstants.types.motion
-            }
+            var type = getType(switchSelector);
             getStatusFromApi(type);
+            activateListener(switchSelector, type);
         }
+
     })
+
 });
 
