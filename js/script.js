@@ -21,7 +21,8 @@ var switchConstants = {
         security: 'security.html',
         watering: 'watering.html',
         settings: 'settings.html',
-        statistics: 'statistics.html'
+        statistics: 'statistics.html',
+        profile: 'profile.html'
     }
 };
 

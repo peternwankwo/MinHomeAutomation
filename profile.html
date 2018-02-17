@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Login Page">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Lighting</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <script src="./jquery-3.2.1.slim.min.js"></script>
+
+    <script src="./popper.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css" >
+    <script src="./js/script.js" ></script>
+
+</head>
+
+<body class="container-fluid px-0" style="background-color: #DFD">
+<header id="primary-nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
+
+        <div class="btn-group">
+            <button class="btn">Notifications</button>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="#">&larr; Older</a>
+                    </li>
+                    <li class="next">
+                        <a href="#">Newer &rarr;</a>
+                    </li>
+                </ul>
+                <!-- dropdown menu links -->
+            </ul>
+        </div>
+    </nav>
+</header>
+<form>
+    <div class="row">
+        <div class="col border border-primary border-top-0">
+            <a href="#"><img class="rounded mx-auto p-2 d-block" id="light-on-status" src="assets/light-bulb-grey.svg" alt="" width="150"
+                             height="150"></a>
+            <h5 class="text-center text-success">Lighting</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-2 ml-2">
+            <h5 class="text-success pl-2">Lightning Switch</h5>
+        </div>
+        <div class="col p-2  text-center">
+
+            <div class="switch">
+                <label class="labelLight"></label>
+                <span class="labelSwitchIsOff"></span>
+                <div>
+                    <input id="switch1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" onclick="toggleSwitch(this)">
+                    <label id="switch1label" for="switch1"></label>
+                </div>
+                <span class="labelSwitchIsOn"></span>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-2 ml-2">
+            <h5 class="text-success pl-2">Motion Detection</h5>
+        </div>
+        <div class="col p-2  text-center">
+            <div class="switch text-center">
+                <label class="labelLight"></label>
+                <span class="labelSwitchIsOff"></span>
+                <div>
+                    <input id="switch3" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" status="OFF" onclick="toggleSwitch(this)">
+                    <label id="switch3label" for="switch3"></label>
+                </div>
+                <span class="labelSwitchIsOn"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-2 ml-2">
+            <h5 class="text-success pl-2">Motion detection settings</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-2 ml-2">
+            <h5 class="text-success pl-2">Usage details</h5>
+        </div>
+    </div>
+</form>
+</body>
+</html>
