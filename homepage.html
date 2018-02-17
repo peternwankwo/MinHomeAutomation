@@ -17,62 +17,67 @@
     <script src="./popper.min.js"></script>
     <script src="./bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css" >
-    <script src="./js/script.js" ></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js"></script>
 </head>
 
 <body class="container-fluid px-0" style="background-color: #DFD">
-    <header id="primary-nav">
-        <nav class="navbar navbar-expand-lg navbar-light bg-success">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+<header id="primary-nav">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
 
-            <div class="btn-group">
-                <button class="btn">Notifications</button>
-                <button class="btn dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-  </button>
-                <ul class="dropdown-menu">
-                    <ul class="pager">
-                        <li class="previous">
-                            <a href="#">&larr; Older</a>
-                        </li>
-                        <li class="next">
-                            <a href="#">Newer &rarr;</a>
-                        </li>
-                    </ul>
-                    <!-- dropdown menu links -->
+        <div class="btn-group">
+            <button class="btn btn-success"><img src="assets/notification.svg" class="float-right" alt="Paris" width="30" height="30"></button>
+            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="#">&larr; Older</a>
+                    </li>
+                    <li class="next">
+                        <a href="#">Newer &rarr;</a>
+                    </li>
                 </ul>
-            </div>
-        </nav>
-    </header>
-    <br/><br/>
-    <form>
-        <div class="row m-1">
-            <div class="col border mx-1">
-                <a href="lighting.html"><img class="rounded mx-auto p-2 d-block" src="assets/light-bulb-grey.svg" alt="" width="120" height="120"></a>
-                <h5 class="text-center text-success">Lighting</h5>
-            </div>
-            <div class="col border  mx-1">
-                <a href="watering.html"><img class="rounded mx-auto p-2 d-block" src="assets/watering_grey.svg" alt="" width="120" height="120"></a>
-                <h5 class="text-center text-success">Watering Plants</h5>
-            </div>
+                <!-- dropdown menu links -->
+            </ul>
         </div>
-        <div class="row m-1">
-            <div class="col border mx-1">
-                <a href="security.html"><img class="rounded mx-auto p-2 d-block" src="assets/cam-grey.svg" alt="" width="120" height="120"></a>
-                <h5 class="text-center text-success">Security Camera</h5>
-            </div>
-            <div class="col border  mx-1">
-                <a href="settings.html"><img class="rounded mx-auto p-2 d-block" src="assets/settings_greysvg.svg" alt="" width="120" height="120"></a>
-                <h5 class="text-center text-success">Settings</h5>
-            </div>
+    </nav>
+</header>
+<br/><br/>
+<form>
+    <div class="row m-1">
+        <div class="col border mx-1">
+            <a href="lighting.html"><img class="rounded mx-auto p-2 d-block" src="assets/light-bulb-grey.svg" alt=""
+                                         width="120" height="120"></a>
+            <h5 class="text-center text-success">Lighting</h5>
         </div>
-    </form>
+        <div class="col border  mx-1">
+            <a href="watering.html"><img class="rounded mx-auto p-2 d-block" src="assets/watering_grey.svg" alt=""
+                                         width="120" height="120"></a>
+            <h5 class="text-center text-success">Watering Plants</h5>
+        </div>
+    </div>
+    <div class="row m-1">
+        <div class="col border mx-1">
+            <a href="security.html"><img class="rounded mx-auto p-2 d-block" src="assets/cam-grey.svg" alt=""
+                                         width="120" height="120"></a>
+            <h5 class="text-center text-success">Security Camera</h5>
+        </div>
+        <div class="col border  mx-1">
+            <a href="settings.html"><img class="rounded mx-auto p-2 d-block" src="assets/settings_greysvg.svg" alt=""
+                                         width="120" height="120"></a>
+            <h5 class="text-center text-success">Settings</h5>
+        </div>
+    </div>
+</form>
 </body>
 
 </html>
