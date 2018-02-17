@@ -20,7 +20,6 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js"></script>
-
     <script src="./pubnub.js"></script>
     <script src="./js/profile.js"></script>
 
@@ -58,15 +57,16 @@
     <br/>
     <div class="container">
         <div class="container-fluid mt-5 ml-5">
-            <div class="alert alert-danger d-none" id="alertProfile">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong id="profileInfo"></strong>
+            <div class="row">
+                <div class="alert alert-sucess d-none" id="alertProfile">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong id="profileInfo"></strong>
+                </div>
+                <div class="alert alert-sucess d-none" id="alertAdd">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong id="profileAdd"></strong>
+                </div>
             </div>
-            <div class="alert alert-danger d-none" id="alertAdd">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong id="profileAdd"></strong>
-            </div>
-
 
             <div class="row">
                 <div class="col p-2 ml-2">
