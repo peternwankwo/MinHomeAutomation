@@ -247,7 +247,6 @@ function checkForValidResponse(url) {
     }, this);
 }
 
-
 // Event Listener
 document.addEventListener("DOMContentLoaded", function(event) {
     // Load the navigation-code-snippet into the placeholder
@@ -266,15 +265,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var isWateringPage = ((switchConstants.navigation.watering.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.water));
         var isMotionPage = ((switchConstants.navigation.lighting.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.motion));
 
-
-
         if (sw && (isWateringPage || isLightingPage || isMotionPage)) {
             // Call to API (to retrieve status)
             var type = getType(switchSelector);
             getStatusFromApi(type);
             activateListener(switchSelector, type);
         }
-
     });
 
     // Activate Security Camera
@@ -282,7 +278,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (isSecurityPage) {
         var isValidUrl = checkForValidResponse(switchConstants.cameraUrls.camera1);
     }
-
 
 });
 

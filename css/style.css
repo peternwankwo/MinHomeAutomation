@@ -112,6 +112,11 @@ div.switch div {
 
 .nav-link {
      color: rgb(241, 235, 235) !important;
+    display: initial;
+}
+img.d-inline-block{
+    margin-right:5px;
+
 }
 
 @media screen and (min-width: 1024px) {
