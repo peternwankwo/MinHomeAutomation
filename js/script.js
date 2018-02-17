@@ -7,11 +7,13 @@ var switchConstants = {
     },
     switches: {
         light: 'switch1',
-        water: 'switch2'
+        water: 'switch2',
+        motion: 'switch3'
     },
     types: {
         light: 'Light',
-        water: 'Water'
+        water: 'Water',
+        motion: 'Motion'
     },
     apiBaseUrl : 'http://192.168.101.149/MIN',
     navigation:{
@@ -38,7 +40,14 @@ function toggleSwitch(sw) {
     var status = sw.getAttribute('status');
     var previousStatus = status;
     status = (status === 'OFF') ? switchConstants.status.on : switchConstants.status.off;
-    var type = (sw.id === switchConstants.switches.light) ? switchConstants.types.light : switchConstants.types.water;
+    var type;
+    if (sw.id === switchConstants.switches.light) {
+        type = switchConstants.types.light
+    } else if (sw.id === switchConstants.switches.water) {
+        type = switchConstants.types.water
+    } else if (sw.id === switchConstants.switches.motion) {
+        type = switchConstants.types.motion
+    }
 
     setSwitch(sw, status);
     setStatusToApi(status, type);
@@ -122,6 +131,16 @@ function updateContols() {
             }
 
             var switchSelector = (apiSettings.type === 'Light') ? 'switch1' : 'switch2';
+
+            var switchSelector;
+            if (apiSettings.type === switchConstants.types.light) {
+                switchSelector = 'switch1';
+            } else if (apiSettings.type === switchConstants.types.water) {
+                switchSelector = 'switch2';
+            } else if (apiSettings.type === switchConstants.types.motion) {
+                switchSelector = 'switch3';
+            }
+
             var sw = document.getElementById(switchSelector);
             if (sw) {
                 var statusFromControl = sw.getAttribute('status');
@@ -185,14 +204,12 @@ function getActivePage(){
 
 // Event Listener
 document.addEventListener("DOMContentLoaded", function(event) {
-
     // Load the navigation-code-snippet into the placeholder
     $( "#navbarTogglerDemo02" ).load("./html/navigation.html",function() {
         selectActiveNavigationItem();
     });
 
-
-    var arrSwitches = [switchConstants.switches.light, switchConstants.switches.water];
+    var arrSwitches = [switchConstants.switches.light, switchConstants.switches.water, switchConstants.switches.motion];
     arrSwitches.forEach(function(switchSelector) {
         sw = document.getElementById(switchSelector);
 
@@ -201,9 +218,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var activePage = getActivePage();
         var isLightingPage = ((switchConstants.navigation.lighting.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.light));
         var isWateringPage = ((switchConstants.navigation.watering.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.water));
-        if (sw && (isWateringPage || isLightingPage)) {
+        var isMotionPage = ((switchConstants.navigation.lighting.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.motion));
+
+        if (sw && (isWateringPage || isLightingPage || isMotionPage)) {
             // Call to API (to retrieve status)
-            var type = (switchSelector === switchConstants.switches.light) ? switchConstants.types.light : switchConstants.types.water;
+            var type;
+            if (switchSelector === switchConstants.switches.light) {
+                type = switchConstants.types.light
+            } else if (switchSelector === switchConstants.switches.water) {
+                type = switchConstants.types.water
+            } else if (switchSelector === switchConstants.switches.motion) {
+                type = switchConstants.types.motion
+            }
             getStatusFromApi(type);
         }
     })
