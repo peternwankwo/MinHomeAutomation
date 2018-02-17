@@ -130,6 +130,12 @@ function ($key,$typeName,$status) use ($app) {
 					  exec("pkill -f irrigationsystem.py");
 					exec("python /var/www/html/MIN/irrigationsystemoff.py");
 					
+				  }else if($typeName == 'Motion' && $status == 1){
+					exec("python /var/www/html/MIN/lightsPIR2.py");
+	
+				  }else if($typeName == 'Motion' && $status == 0){
+					  exec("pkill -f lightsPIR2.py");
+					
 				  }
 				//echo $sql;
 
