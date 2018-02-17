@@ -10,15 +10,19 @@ pubnub.addListener({
 			$.ajax({
 				url: apiUrl,
 				type: "GET",
-				profileInfo: $('#profileInfo'),
 				sendStatus: status,
 				success: function (result, xhr, settings) {
 					result = JSON.parse(result)[0];
-					var htmlnew = '<span> Welcome:: '+ result.shadow.name + '</span>';
-				//	profileInfo.innerHTML(html);
-					$('#profileInfo').html(htmlnew);
-					//console.log(result.shadow.name);
-					//console.log(result.shadow.location.formatted_address);
+					if (document.getElementById('alertProfile').classList.contains("d-none")) {
+						document.getElementById('alertProfile').classList.remove("d-none");
+						var greetUser = '<span> Welcome :: ' + result.shadow.name + '</span>';
+						$('#profileInfo').html(greetUser);			
+					}
+					if (document.getElementById('alertAdd').classList.contains("d-none")) {
+						document.getElementById('alertAdd').classList.remove("d-none");
+						var userAdd = '<span> Current Address:: ' + result.shadow.location.formatted_address + '</span>';
+						$('#profileAdd').html(userAdd);
+					}
 				},
 				error: function (error) {
 					console.log("Peters mobile network is not available, so also the API is not available!");
