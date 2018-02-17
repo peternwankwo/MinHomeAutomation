@@ -35,6 +35,27 @@ $app->get('/v1/beacon', function () {
 				//echo json_encode($info);
 });
 
+$app->get('/v1/beacon/info', function () {
+				$result = null;
+				
+				$username = 'alishapatel2006-gmail-com--jad';
+				$password = 'ce3d89e4be9a769738f9715769248ca4';
+				$url='https://cloud.estimote.com/v2/devices';
+				
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+				curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+				$output = curl_exec($ch);
+				$info = curl_getinfo($ch);
+				curl_close($ch);
+
+				//echo $output;
+				echo json_encode($info);
+});
+
+
 // run the Slim app
 $app->run();
 ?>
