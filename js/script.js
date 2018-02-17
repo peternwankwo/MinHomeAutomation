@@ -256,15 +256,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     var arrSwitches = [switchConstants.switches.light, switchConstants.switches.water, switchConstants.switches.motion];
-
+    var activePage = getActivePage();
     arrSwitches.forEach(function(switchSelector) {
         sw = document.getElementById(switchSelector);
         // Only continue if: watering.html => water
         // Only continue if: lighting.html => light and motion
-        var activePage = getActivePage();
+
         var isLightingPage = ((switchConstants.navigation.lighting.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.light));
         var isWateringPage = ((switchConstants.navigation.watering.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.water));
         var isMotionPage = ((switchConstants.navigation.lighting.indexOf(activePage) > -1) && (switchSelector === switchConstants.switches.motion));
+
+
 
         if (sw && (isWateringPage || isLightingPage || isMotionPage)) {
             // Call to API (to retrieve status)
@@ -272,10 +274,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
             getStatusFromApi(type);
             activateListener(switchSelector, type);
         }
+
     });
 
     // Activate Security Camera
-    var isValidUrl = checkForValidResponse(switchConstants.cameraUrls.camera1);
+    var isSecurityPage = ((switchConstants.navigation.security.indexOf(activePage) > -1));
+    if (isSecurityPage) {
+        var isValidUrl = checkForValidResponse(switchConstants.cameraUrls.camera1);
+    }
+
 
 });
 
