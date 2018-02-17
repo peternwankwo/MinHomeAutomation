@@ -18,7 +18,7 @@ pubnub.addListener({
 						var greetUser = '<span> Welcome :: ' + result.shadow.name + '</span>';
 						$('#profileInfo').html(greetUser);
 						document.getElementById('alertLight').classList.add("alert-warning");
-						$('#profileLight').html('<span>Your lighting preferences is set to Red</span>')
+						$('#profileLight').html('<span>Your <b>lighting</b> preferences is set to Red</span>')
 
 					}
 					if (document.getElementById('alertAdd').classList.contains("d-none")) {
