@@ -23,6 +23,12 @@ var switchConstants = {
         settings: 'settings.html',
         statistics: 'statistics.html',
         profile: 'profile.html'
+    },
+    cameraUrls: {
+        testUrl: 'https://daveismyname.com',
+        camera1: 'http://192.168.101.170:3000/',
+        camera2: 'https://www.youtube.com/embed/qy13FavwqPo?autoplay=1',
+        liveAmsterdamCamera: 'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com'
     }
 };
 
@@ -220,6 +226,27 @@ function activateListener(switchSelector, type){
     $(listenToApi);
 }
 
+function checkForValidResponse(url) {
+    ////192.168.101.170:3000/
+    var abc = $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        crossDomain: true,
+        timeout: 5000,
+        complete: function( e, xhr, settings) {
+            switch( e.status ) {
+                case 200:
+                    $("#itemcontent iframe").attr({'src':url});
+                    break;
+                default:
+                    alert('Security camera unavailable or can\'t be iframed:' + url);
+                    return false;
+                    break;
+            }
+        }
+    }, this);
+}
+
 
 // Event Listener
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -229,7 +256,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     var arrSwitches = [switchConstants.switches.light, switchConstants.switches.water, switchConstants.switches.motion];
-
 
     arrSwitches.forEach(function(switchSelector) {
         sw = document.getElementById(switchSelector);
@@ -246,8 +272,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
             getStatusFromApi(type);
             activateListener(switchSelector, type);
         }
+    });
 
-    })
+    // Activate Security Camera
+    var isValidUrl = checkForValidResponse(switchConstants.cameraUrls.camera1);
 
 });
 
