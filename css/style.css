@@ -124,3 +124,15 @@ img.d-inline-block{
         font-size: 24px !important;
 }
 }
+
+.smalltext{
+    font-size: small;
+}
+.linkToPage{
+    color: black;
+    text-decoration: underline;
+}
+.linkToPage:hover{
+    color: black;
+    text-decoration: underline;
+}
